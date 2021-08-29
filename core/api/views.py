@@ -212,9 +212,9 @@ class OrderCreateAPIView(CreateAPIView):
                                 <Amount>{price*100}</Amount>
                                 <Currency>944</Currency>
                                 <Description>{id}</Description>
-                                <ApproveURL>http://127.0.0.1:8000/course/{course.id}/</ApproveURL>
-                                <CancelURL>http://127.0.0.1:8000/course/{course.id}/</CancelURL>
-                                <DeclineURL>http://127.0.0.1:8000/course/{course.id}/</DeclineURL>
+                                <ApproveURL>https://taskool.com/course/{course.id}/</ApproveURL>
+                                <CancelURL>https://taskool.com/course/{course.id}/</CancelURL>
+                                <DeclineURL>https://taskool.com/course/{course.id}/</DeclineURL>
                         </Order>
                 </Request>
             </TKKPG>"""

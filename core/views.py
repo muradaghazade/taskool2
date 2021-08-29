@@ -42,7 +42,7 @@ class CourseDetailView(DetailView):
         dict_resp = xmltodict.parse(response)
         print(dict_resp['Message']['OrderStatus'])
         order_id = int(dict_resp['Message']['OrderDescription'])
-        if dict_resp['Message']['OrderStatus'] == "DECLINED":
+        if dict_resp['Message']['OrderStatus'] == "APPROVED":
             Order.objects.filter(pk=order_id).update(successfuly_paid=1)
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
