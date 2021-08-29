@@ -1,0 +1,152 @@
+.created {
+    width: 100%;
+    height: 100px;
+}
+
+
+.correct_answer1{
+    display: flex;
+    justify-content: center;
+
+}
+
+.input{
+    border: 1px solid #666;
+    border-radius: 2px;
+}
+
+.save {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cc7a00;
+    font-size: 16px;
+    color: #fff;
+
+}
+
+.next {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cc7a00;
+    font-size: 16px;
+    color: #fff;
+    display: none;
+}
+label{
+    font-size: 20px;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+/* .auto {
+    width: 100px;
+    height: 100px;
+    background-color:rgb(245, 223, 76);
+    border-radius: 2px;
+    color: black;
+    cursor: pointer;
+} */
+
+.next {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cc7a00;
+    font-size: 16px;
+    color: #fff;
+    display: none;
+}
+.file1{
+    width: 450px;
+    height: 40px;
+
+    border: 1px solid #cc7a00;
+}
+
+.click_buttons{
+    cursor: pointer;
+}
+
+
+.left-side{
+    background-color: #343a40;
+    display: none;
+}
+.left-side-pro{
+    width: 100%;
+    background-color: #343a40 !important;
+    padding: 0px;
+}
+.left-ques{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.left-ques-h{
+    color: white;
+}
+.left-ques-button{
+    border: none;
+    outline: none !important;
+    background-color: transparent;
+    color: white;
+    font-size: 30px;
+}
+
+
+#right-side{
+    padding: 0 !important;
+}
+
+.left-ul {
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+.left-li {
+    color: white;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: left;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.left-li:hover{
+    color: wheat;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+
+.username-name {
+    width: 50%;
+    height: 100% !important;
+    background-color: transparent;
+    color: white;
+    font-size: 40px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.left-list {
+    height: inherit;
+    margin-top: 30px;
+}
+
+
+#list-here{
+    display: flex;
+    justify-content: center;
+}
+

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/congrats.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="main mb-5">
+    <div class="head">
+        <h1 class="heading mb-5">Congratulations!</h1>
+        <img class="happy-icon mb-5" src="{% static 'img/happycustomer.png' %}" alt="">
+        <h1 class="mb-5">You have completede the course!</h1>
+        <a href="{% url 'core:main' %}"><button class="back-btn">Go Back</button></a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/cong.js' %}"></script>
+{% endblock %}

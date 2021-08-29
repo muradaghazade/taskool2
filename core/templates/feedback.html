@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<section class="main" style="width: 90%; margin:auto">
+    <div class="row">
+
+        <div class="col-12 mt-5">
+            <h2>Your Courses</h2>
+            <div class="row created-section" id="created-section">
+                
+            </div>
+            
+
+
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+{%  block js %}
+<script src="{% static 'js/feedback.js' %}"></script>
+
+{% endblock %}

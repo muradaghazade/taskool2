@@ -1,0 +1,362 @@
+.nav {
+  padding: 20px;
+
+  box-shadow: 0px 6px 8px 1px rgba(34, 60, 80, 0.14);
+}
+.cont {
+  width: 95%;
+  margin: 0 auto;
+}
+.title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.title ul {
+  display: flex;
+  justify-content: space-around;
+}
+.title ul li {
+  margin: 0 30px 0 30px;
+}
+.title ul li a {
+  font-family: "Signika", sans-serif;
+  color: #000;
+}
+.nav__input input {
+  width: 100%;
+  padding: 15px 70px 15px 2rem;
+  border: 1px solid grey;
+  outline: none;
+}
+.nav__input i {
+  position: absolute;
+  left: 57rem;
+  top: 37px;
+  color: grey;
+}
+.logo a {
+  color: grey;
+  font-size: 48px;
+  font-weight: 500;
+  font-family: "Signika", sans-serif;
+}
+.logo span {
+  background-color: #fff700;
+}
+.basket i {
+  margin-left: 70px;
+  color: grey;
+  font-size: 22px;
+}
+.buttons :nth-child(1) {
+  color: blue;
+  background-color: transparent;
+  border: 1px solid blue;
+  opacity: 0.8;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.buttons :nth-child(1):hover {
+  background-color: blue;
+  opacity: 0.5;
+  color: #fff;
+  transition: 0.5s;
+}
+.buttons :nth-child(2) {
+  color: #fff;
+  background-color: grey;
+  border: 1px solid grey;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.buttons :nth-child(2):hover {
+  transition: 0.5s;
+  background-color: transparent;
+  color: grey;
+  border: 1px solid grey;
+}
+
+.header {
+  padding: 0px 0;
+}
+.header__title {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header__container {
+  background: url(../img/add_txt.jpg) no-repeat center;
+  background-size: cover;
+  padding: 10rem 0;
+}
+.input {
+  background-color: #fff;
+  width: 30%;
+  text-align: left;
+  padding: 50px 34px;
+}
+.input h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #001219;
+  font-family: sans-serif;
+}
+.input p {
+  letter-spacing: 1px;
+  margin-top: 10px;
+  line-height: 22px;
+}
+.input input {
+  margin-top: 30px;
+  width: 90%;
+  padding: 15px 5px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.exam {
+  margin-top: 10px;
+  padding: 10px;
+}
+.exam__container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.exam__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form {
+  font-size: 24px;
+}
+.weeks {
+  color: blue;
+  font-size: 22px;
+  font-weight: 600;
+}
+.all span {
+  color: blue;
+}
+.fleximg {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.fleximg div {
+  width: 24%;
+  position: relative;
+  transition: 0.5s;
+  opacity: 0.9;
+}
+.fleximg img {
+  width: 100%;
+  border-radius: 5px;
+}
+.fleximg div:hover {
+  transform: scale(1.1, 1.1); /* Standard syntax */
+  transition: 0.5s;
+  opacity: 1;
+}
+.fleximg span {
+  position: absolute;
+  bottom: 25px;
+  left: 23px;
+  color: grey;
+  font-size: 18px;
+}
+.fleximg h3 {
+  position: absolute;
+  bottom: 45px;
+  left: 23px;
+  color: #fff;
+  font-size: 24px;
+  font-family: sans-serif;
+}
+.work {
+  padding: 10px;
+  margin-top: 10px;
+}
+.work__container {
+  width: 90%;
+  margin: 0 auto;
+}
+.work__title {
+  display: flex;
+  justify-content: space-between;
+}
+.worktext h3 {
+  color: #000;
+  font-size: 24px;
+  font-weight: 600;
+}
+.workvideo {
+  width: 40%;
+}
+.workvideo img {
+  width: 100%;
+}
+.instructor {
+  margin-top: 70px;
+  background-color: whitesmoke;
+  padding: 30px;
+  position: relative;
+}
+.instructor__container {
+  width: 70%;
+  margin: 0 auto;
+}
+.instructor__title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.insimg {
+  width: 70%;
+  margin-right: 10px;
+}
+.insimg img {
+  width: 24%;
+  position: absolute;
+  top: -42px;
+}
+.instext {
+  line-height: 24px;
+}
+.instext h3 {
+  font-size: 26px;
+  color: #000;
+  font-weight: 600;
+  font-family: sans-serif;
+  letter-spacing: 0.2px;
+}
+.instext p {
+  width: 50%;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}
+.instext button {
+  margin-top: 10px;
+  padding: 10px 35px;
+  background-color: darkcyan;
+  opacity: 0.8;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.udemy {
+  background-color: rgb(26, 96, 177);
+  margin-top: 10rem;
+  position: relative;
+  padding: 50px;
+}
+.udemy__container {
+  width: 70%;
+  margin: 0 auto;
+}
+.udemy__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.udemyimg {
+  width: 70%;
+}
+.udemyimg img {
+  width: 24%;
+  position: absolute;
+  top: -42px;
+  right: 30rem;
+}
+.udemytext h3 {
+  font-size: 26px;
+  color: #fff;
+  font-weight: 600;
+  font-family: sans-serif;
+  letter-spacing: 0.2px;
+}
+.udemytext p {
+  width: 80%;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}
+.udemytext button {
+  margin-top: 10px;
+  padding: 10px 35px;
+  background-color: darkcyan;
+  opacity: 0.8;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.subscribe {
+  padding: 10px;
+  margin-top: 70px;
+  background-color: whitesmoke;
+}
+.subs__container {
+  width: 90%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.subs__title {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.subs__title h3 {
+  font-size: 22px;
+  color: #000;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+.subs__title input {
+  width: 80%;
+  margin: 0 40px;
+  padding: 7px 5px;
+  outline: none;
+}
+.sosial i {
+  margin: 0 10px;
+  color: grey;
+  font-size: 22px;
+}
+
+footer {
+  margin-top: 10px;
+  padding: 10px;
+}
+.footer__container {
+  width: 90%;
+  margin: 0 auto;
+}
+.footer__title {
+  display: flex;
+  justify-content: space-between;
+  line-height: 30px;
+}
+select {
+  padding: 8px 88px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: grey;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 600;
+}

@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/create-task.css' %}">
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <
+{% endblock %}
+
+{% block content %}
+    
+    {% comment %} <link rel="stylesheet" href="./assets/css/create-task.css">
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/navbar.css" /> {% endcomment %}
+    
+    
+    <!-- End Links -->
+
+    <!-- Navbar section -->
+    {% comment %} <nav class="nav">
+      <div class="cont">
+        <div class="title">
+          <div class="logo">
+            <a href="#"
+              >Ta
+              <span>sk</span>
+              illed</a
+            >
+          </div>
+          <ul>
+            <li><a href="#">Catalog</a>
+                <i class="fas fa-chevron-down"></i></li>
+            <li><a href="#">Intemship</a>
+                <i class="fas fa-chevron-down"></i></li>
+          </ul>
+          <div class="nav__input">
+          <input type="text" placeholder="Search our catalog" />
+          <i class="fas fa-search"></i>
+        </div>
+            <div class="basket">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+          <div class="buttons">
+            <button>Sign in</button>
+            <button>Register</button>
+          </div>
+        </div>
+      </div>
+    </nav> {% endcomment %}
+    <!-- End Navbar section -->
+
+    <div class="content mt-5">
+        <div class="container">
+            <h1 class="header mb-5">Create your Task</h1>
+            <div class="row">
+                <div class="col-md-4 first-side p-4">
+                    <h3 style="font-size: 23px;">Add Voice Record</h3>
+                    <div class="text-center mt-4 d-flex">
+                    <button id="record-btn" style="border: none; background: white; border-radius: 5px; padding: 8px; margin-right: 10px; height: 40px; margin-top: 30px; outline: none;"><i class="fas fa-record-vinyl" id="rec-icon" style="color: red; font-size: 23px;"></i></button>
+                    <button id="stop" style="display: none; border: none; background: white; border-radius: 5px; padding: 8px; margin-right: 10px; height: 40px; margin-top: 30px; outline: none;"><i class="fas fa-stop-circle" style="color: red; font-size: 23px;"></i></button>
+                    <audio id="player" class="mt-4" controls></audio> 
+                  </div>
+                    <!-- <input type="file" name="" id="recorder" accept="audio/*" capture class="voice-attache"> -->
+                    <a id="download" class="d-none">Download</a>
+            
+                </div>
+                <div class="col-md-8 pl-5 d-flex">
+                    <textarea name="Description" placeholder="Description" id="" cols="30" rows="10" class="voice-desc"></textarea>
+                    <div class="times ml-5"><input type="time" name="" id=""> - <input type="time"></div>
+                    <div class="ml-5 pl-5" style="margin-top: 80px;"><input id="checkboxx" type="checkbox" name="" style="opacity: 0;">
+                      <label for="checkboxx"><i class="fas fa-asterisk" style="color: #f65058ff;"></i></label>
+                      
+                    </div>
+                </div>
+                <div class="col-md-4 first-side2 p-4">
+                    <h3 style="font-size: 23px;">Add Your Text</h3>
+                    <input type="text" placeholder="Enter the title" style="width: 100%; margin-bottom: 13px; padding: 10px; padding-left: 20px;">
+                    <textarea name="" id="" placeholder="Enter the text" cols="30" rows="10" style=" padding: 20px;
+                    border-radius: 5px;
+                    outline: none;
+                    resize: none;
+                    height: 80%;
+                    width: 100%;"></textarea>
+                </div>
+                <div class="col-md-8 pl-5 d-flex" style="margin-top: 58px;">
+                    <textarea name="Description" placeholder="Description" id="" cols="30" rows="10" class="voice-desc"></textarea>
+                    <div class="times ml-5"><input type="time" name="" id=""> - <input type="time"></div>
+                    <div class="ml-5 pl-5" style="margin-top: 80px;"><i class="fas fa-asterisk" style="color: #f65058ff;"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+    <!-- <script>
+      let shouldStop = false;
+      let stopped = false;
+      const downloadLink = document.getElementById('download');
+      const stopButton = document.getElementById('stop');
+    
+      stopButton.addEventListener('click', function() {
+        shouldStop = true;
+      });
+    
+      const handleSuccess = function(stream) {
+        const options = {mimeType: 'audio/webm'};
+        const recordedChunks = [];
+        const mediaRecorder = new MediaRecorder(stream, options);
+    
+        mediaRecorder.addEventListener('dataavailable', function(e) {
+          if (e.data.size > 0) {
+            recordedChunks.push(e.data);
+          }
+    
+          if(shouldStop === true && stopped === false) {
+            mediaRecorder.stop();
+            stopped = true;
+            console.log('stopped');
+          }
+        });
+    
+        mediaRecorder.addEventListener('stop', function() {
+          downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+          downloadLink.download = 'acetest.wav';
+          console.log('stopped');
+        });
+    
+        mediaRecorder.start();
+      };
+    
+      navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+          .then(handleSuccess);
+    
+    </script> -->
+  {% block js %}
+
+
+    <script>
+      document.getElementById('record-btn').addEventListener('click', () => {
+        document.getElementById('stop').style.display = 'block'
+        document.getElementById('rec-icon').style.color = "grey"
+      })
+      document.getElementById('stop').addEventListener('click', (e) => {
+        document.getElementById('rec-icon').style.color = "red"
+        document.getElementById('stop').style.display = 'none'
+      })
+      </script>
+
+      
+      {% endblock %}
+    

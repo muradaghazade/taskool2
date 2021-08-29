@@ -1,0 +1,61 @@
+{% load static %}
+
+<div class="container-fluid m-auto d-flex justify-content-center" style="background-color: #343a40!important;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-white " style="background:#343a40!important;">
+  <div class="logo">
+    <a href="{% url 'core:main' %}">    <img class="head-image" src="{% static 'img/TASkool.png' %}" style="width: 100%;">
+    </a>  
+
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-5 mt-2 mt-lg-0 ml-5">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'core:course-list' %}">Kurslar <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" id="cre-link">
+        <a class="nav-link" href="{% url 'core:internship-list' %}">Oyunlar</a>
+      </li>
+      <li class="nav-item active" id="cre-link" >
+        <a class="nav-link" href="{% url 'core:btask-list' %}">Olimpiadalar</a>
+      </li>
+      <li class="nav-item search-nav">
+        <form action="" class="nav-search">
+        <input type="text" class="nav-input" style="background-color: #343a40!important; border: 1px solid white; border-radius: 3px; padding: 7px; color: white; outline: none;" placeholder="Axtarış et">
+      </form>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0 ml-5">
+
+      <input class="d-none form-control mr-sm-2 ml-5" type="search" placeholder="Search">
+      {% if user.is_authenticated %}
+      <a href="/profile"><button class="btn auth-reg my-2 my-sm-0 ml-4" type="submit">{{request.user.username}}</button>
+      </a>
+      <a href="{% url 'core:log-out' %}">
+      <button class="btn my-2 my-sm-0 ml-4" id="log-out2" type="submit">Çıxış</button>
+    </a>
+      {% else %}
+      <a href="{% url 'core:profile' %} ">
+        <div class="user-data-here">
+          <a href="{% url 'core:login' %}" class="log">
+            <button class="btn auth my-2 my-sm-0 ml-4" type="submit" style="color:white;">Giriş</button>
+          </a>
+          <a href="{%url 'core:register-type' %}">
+            <button class="btn auth-reg my-2 my-sm-0 ml-4" type="submit">Qeydiyyat</button>
+          </a>
+          </div>
+            <button class="btn my-2 my-sm-0 ml-4" id="log-out" type="submit" style="color: white;">Çıxış</button>
+          
+      </a>
+      {% endif %}
+     
+    </div>
+
+    </div>
+  </div>
+</nav>
+</div>

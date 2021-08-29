@@ -1,0 +1,31 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.section__language{
+    padding-top: 30px;
+    width: 98%;
+}
+.section__955{
+    margin-top: 90px;
+    border: 1px solid lightgray;
+}
+.main-ddd{
+    background-image: url(../img/georgie-cobbs-bKjHgo_Lbpo-unsplash.jpg);
+    background-position: center;
+/* height: 620px; */
+    background-size: cover;
+}
+.section__955{
+    background-color: #343a40!important;
+    color: white;
+    border-radius: 5px;
+}
+
+.subjects-here{
+    background-color: white;
+    /* margin-bottom: 100px; */
+    border-radius: 5px;
+}

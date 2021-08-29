@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/course_detail.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="{% static 'css/create_subject.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-5">Continue creating Task...</h1>
+<div class="created text-center">
+
+    <!-- <div class="for-image">
+        <i class="far fa-plus-square" style="font-size: 90px; color: grey;"></i>
+    </div> -->
+
+</div>
+
+<form class='from_subject text-center' action="/">
+
+
+
+    <div class="item mt-3">
+        <label for="name">Task name<span>*</span></label>
+        <div class="name-item">
+            <input class="input" id="name" type="text" name="name" placeholder="Name" />
+
+        </div>
+    </div>
+    <div class="item mt-3">
+        <label for="name">Task Duration<span>*</span></label>
+        <div class="name-item">
+            <input class="input" id="deadline" type="number" name="deadline" placeholder="Duration" />
+
+        </div>
+    </div>
+
+
+    <button class='save mt-3' type="submit">Save</button>
+
+
+</form>
+<div class="next-div d-flex justify-content-center mt-5">
+    <a href="{% url 'core:create-question' %}" class="next">Next</a>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+<script src="{% static 'js/create-subject.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,106 @@
+.created {
+    width: 100%;
+    height: 100px;
+}
+
+#video1 {
+    width: 60px;
+    height: 30px;
+    border: 2px solid;
+    padding: 10px;
+    background: #cc7a00;
+    color: white;
+    border-radius: 3px;
+    border: 0px;
+}
+
+#image1 {
+    width: 60px;
+    height: 30px;
+    border: 2px solid;
+    padding: 10px;
+    background: #cc7a00;
+    color: white;
+    border-radius: 3px;
+    border: 0px;
+}
+
+#link1 {
+    width: 60px;
+    height: 30px;
+    border: 2px solid;
+    padding: 10px;
+    background: #cc7a00;
+    color: white;
+    border-radius: 3px;
+    border: 0px;
+}
+
+.correct_answer1 {
+    display: flex;
+    justify-content: center;
+}
+
+.save {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cc7a00;
+    font-size: 16px;
+    color: #fff;
+
+}
+
+.next {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cc7a00;
+    font-size: 16px;
+    color: #fff;
+    display: none;
+}
+
+.auto {
+    width: 50px;
+    height: 50px;
+    background-color: #cc7a00;
+    border-radius: 2px;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.next {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cc7a00;
+    font-size: 16px;
+    color: #fff;
+    display: none;
+}
+
+.file1 {
+    width: 300px;
+    height: 40px;
+}
+#question-title{
+    font-size: 30px;
+    color: #cc7a00;
+    
+}
+
+#question-desc{
+    font-size: 20px;
+    color: #3d1717;
+}
+
+#video{
+    display: flex;
+    justify-content: center;
+
+}

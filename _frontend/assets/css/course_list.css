@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.section__learn_english{
+background-color: rgb(245, 243, 243);
+}
+
+.section__learn_english_container{
+    width: 95%;
+    margin: auto;
+    padding-top: 20px;
+}
+.sort_by_btn{
+    color: darkturquoise;
+    background-color: rgb(245, 243, 243);
+    border: none;
+    padding: 10px;
+}
+.sort_by_btn:active{
+    border: 1px solid darkturquoise;
+    background-color:  rgb(226, 221, 221) !important;
+}
+.sort_by_btn__child{
+    color: darkturquoise;
+    background-color: rgb(245, 243, 243);
+    border: none;
+    
+}
+.sort_by_btn-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__flex__column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

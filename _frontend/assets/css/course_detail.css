@@ -1,0 +1,14 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.section__language{
+    padding-top: 150px;
+    width: 98%;
+}
+.section__955{
+    margin-top: 150px;
+    border: 1px solid lightgray;
+}

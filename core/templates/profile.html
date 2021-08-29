@@ -1,0 +1,90 @@
+    {% extends 'base.html' %}
+    {% load static %}
+    
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+    {% endblock %}
+    
+    {% block content %}
+    
+    
+    
+    
+    <section class="main">
+        <div class="row" style="width: 101%;">
+            <div class="ulclass pt-5 col-md-2 col-12" style="background: #343a40!important;
+            padding-left: 40px;">
+                <ul class="lef-ul">
+                    <li class="mt-4">
+                        <a href="{% url 'core:main' %}" style="color: white;" class="sidebar-items">
+                            Home
+                        </a>
+                    </li>
+                    <li class="mt-4">
+                        <a href="{% url 'core:create-course' %}" style="color: white;" class="sidebar-items">
+                            Create course
+                        </a>
+                    </li>
+                    <li class="mt-4">
+                        <a style="font-size: 15px; color: white;" href="{% url 'core:edit-profile' %}" class="sidebar-items">
+                            Edit profile
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="col-md-8 col-12 mt-5 pl-5">
+                <h2>Created courses</h2>
+                <div class="row created-section" id="created-section">
+    
+                </div>
+    
+                <!-- <div class="col-3 created">
+                            <div class="card">
+                                <div class="for-image">
+                                    <img src="https://cdn.mos.cms.futurecdn.net/wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg" class="card-img-top" alt="...">
+                                </div>
+                                <div class="card-body p-0">
+                                  <h5 class="card-title text-center mt-2">Some course</h5>
+                                </div>
+                              </div>
+                        </div> -->
+                <div>
+    
+                </div>
+                <!-- <div class="col-3 created">
+                            <div class="card" style="border: none;">
+                                <div class="for-image" style="margin-top: 27%; margin-left: 8px;">
+                                    <img src="download.png" style="background-color: white;" class="card-img-top" alt="...">
+                                    
+                                </div>
+                              </div>
+                        </div> -->
+    
+            </div>
+            <div class="col-md-2 col-12 pt-5" style="background-color: rgb(244, 244, 244); border-left: 1px solid rgba(0,0,0,.1);">
+                <h2 id="user-title" class="mb-4"></h2>
+                <label for="user-fullname"><b>Name</b></label>
+                <p id="user-fullname"></p>
+                <label for="user-email"><b>Email</b></label>
+                <p id="user-email"></p>
+            </div>
+        </div>
+        </div>
+    </section>
+   
+    <script src="{% static 'js/profile.js' %}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+    <script>
+            // ClassicEditor
+            //         .create( document.querySelector( '#editor' ) )
+            //         .then( editor => {
+            //                 console.log( editor );
+            //         } )
+            //         .catch( error => {
+            //                 console.error( error );
+            //         } );
+    </script>
+    {% endblock %}

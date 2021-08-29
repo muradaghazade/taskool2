@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/course_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main-ddd">
+
+    
+    <div class="container ">
+        <p class="d-none" id="page-pk">{{course.pk}}</p>
+        <div class="row">
+            <div class="col-8" style="margin-top: 25px;">
+                <div class="section__language">
+                    <h3><b class="the-title"></b> </h3>
+                    <p>The course by <span class="teacher-here"></span></p>
+                    <div class="mb-4" style="border-radius: 5px; background-color: white;">
+                        <div class="px-3 pt-3">
+                            <h5> <span class="the-title"></span> - <span class="teacher-here"></span></h5>
+                            <div style="color: gray;" class="d-flex">
+                                <div class="d-flex">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    <p class="ml-1"><span class="min-age">16</span>+ years old</p>
+                                </div>
+                                <div class="d-flex ml-3">
+                                    <i class="far fa-clock"></i>
+                                    <p class="ml-1">lesson <span class="deadline"></span> weeks</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid gray;border-bottom:  1px solid gray;">
+                            <div id="video-div" style="text-align: center; padding: 10px;"></div>
+                            <div class="yt_video_div" style="text-align: center; padding: 10px;"></div>
+                            <p class="p-3 description">
+                            </p>
+                        </div>
+                        <div style="background-color: rgb(241, 237, 237);">
+                            <div class="px-3 pt-3 d-flex">
+                                <div
+                                    style="width: 15px;height: 15px;border: 3px solid rgba(0, 247, 255, 0.753);border-radius: 50%;">
+                                </div>
+                                <p class="pl-3 len"></p>
+                            </div>
+                            <div class="px-3 pb-3 d-flex justify-content-between">
+                                <h4><span class="course-price">AZN</span><small class="text-info"> for <span class="deadline"></span> weeks</small></h4>
+                                <div>
+                                    <!-- <input style="color: gray;border:1px solid rgb(189, 183, 183); padding: 2px 10px;"
+                                        type="submit" value="Hide description"> -->
+                                        
+                                        <a id="start-a" href="" style="text-decoration: none;">
+                                    <button id="start-course" class="text-info"
+                                        style="display: none; background-color: yellow; color: black !important; border: none;padding: 2px 10px; border-radius: 5px; padding: 15px;" 
+                                        >Start Course</button>
+                                    </a>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <h3>Topic:</h3>
+
+                    <div class="subjects-here"></div>
+
+                    <!-- <div style="border: 1px solid lightgray; border-radius: 5px;" class="px-3 pt-3">
+                        <h5>Intensive Course (Full day Course)</h5>
+                        <div style="color: gray;" class="d-flex">
+                            <div class="d-flex">
+                                <i class="fas fa-birthday-cake"></i>
+                                <p class="ml-1">16+ years old</p>
+                            </div>
+                            <div class="d-flex ml-3">
+                                <i class="far fa-clock"></i>
+                                <p class="ml-1">lesson 45 minutes</p>
+
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+
+            </div>
+            <div class="col-4" id="book-place">
+                <div class="section__955">
+                    <div style="border-bottom: 1px solid lightgray;">
+                        <h4 class="px-3 pt-3"><b class="course-price"> </b><small style="color: white;"> for 2 weeks</small></h4>
+                    </div>
+                    <div class="p-3">
+                        <div class="d-flex justify-content-between">
+                            <h5>Course</h5>
+                            <h5 class="course-price"></h5>
+                        </div>
+                        <p class="the-title" style="font-size: 19px;
+                        color: white;
+                        margin-top: 5px;"></p>
+                        
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <p style="font-size: 18px;
+                        color: white;
+                        margin-top: 5px;"><span class="teacher-here"></span></p>
+                            </div>
+                            <div class="col-6">
+                                
+                                <p style="font-size: 19px;
+                        color: white;
+                        margin-top: 5px;">for <span class="deadline"></span> weeks </p>
+                            </div>
+                        </div>
+                        <!-- <select class="form-control mb-3">
+                            <option>Homestay (Self-catering)</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                        <select class="form-control mb-3">
+                            <option>No meals</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select> -->
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <!-- <select class="form-control">
+                                    <option>30/05/2021</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select> -->
+                            </div>
+                            <div class="col-6">
+                                <!-- <select class="form-control">
+                                    <option>13/06/2021</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select> -->
+                            </div>
+                        </div>
+                        <div id="congrats-div">
+                            <!-- <p>Total due now</p> -->
+                        </div>
+                        <div class="d-flex justify-content-between hide-me">
+                            <p>Total due now</p>
+                            <h5 class="course-price"></h5>
+                        </div>
+                        <button class="hide-me" id="order-button" style="width: 100%;color: white;background-color: red;border: none;padding: 10px 0px; border-radius: 5px;" type="submit" value="Book">Book</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="{% static 'js/course-detail.js' %}"></script>
+    {% endblock %}
+
+
+
+

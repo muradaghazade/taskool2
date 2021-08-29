@@ -1,0 +1,332 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/course_detail.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+  integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<style>
+  html,
+  body {
+
+
+    min-height: 100%;
+  }
+
+  body,
+  div,
+  input,
+  select,
+  textarea,
+  label {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 22px;
+  }
+
+  .create-acc {
+    display: flex;
+    justify-content: center;
+    color: #000000;
+  }
+
+  h1 {
+    position: absolute;
+    margin: 0;
+    line-height: 40px;
+    font-size: 40px;
+    color: #fff;
+    z-index: 2;
+    line-height: 83px;
+  }
+
+  .testbox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: inherit;
+    padding: 20px;
+    background-image: url("../../static/img/scott-graham-5fNmWej4tAA-unsplash.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  #regForm {
+    width: 30%;
+    padding: 20px;
+    border-radius: 6px;
+    background: #FFFFFF;
+    border: 1px solid #999999;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 4px 13px rgba(155, 155, 155, 0.27);
+    border-radius: 8px;
+    margin: 50px;
+  }
+
+  .banner {
+    position: relative;
+    height: 300px;
+    background-image: url("/uploads/media/default/0001/02/095995dadd0a1a9d5d83e6a467edf9ef7f35c114.jpeg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .banner::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .inp {
+      width: 70%;
+      padding: 5px;
+      }
+
+  input[type="date"] {
+    padding: 4px 5px;
+  }
+
+  textarea {
+    width: calc(100% - 12px);
+    padding: 5px;
+  }
+
+  .item {
+    position: relative;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .item span {
+    color: red;
+  }
+
+  input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  label.radio {
+    position: relative;
+    display: inline-block;
+    margin: 5px 20px 15px 0;
+    cursor: pointer;
+  }
+
+  .question span {
+    margin-left: 30px;
+  }
+
+  .question-answer label {
+    display: block;
+  }
+
+  .register-button {
+    width: 70%;
+    background: rgba(245, 198, 77, 0.64);
+    border-radius: 4px;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .register-button:hover {
+    background-color: #cc7a00;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  label.radio:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+  }
+
+  input[type=radio]:checked+label:before,
+  label.radio:hover:before {
+    border: 2px solid #cc7a00;
+  }
+
+  label.radio:after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 8px;
+    height: 4px;
+    border: 3px solid #cc7a00;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    opacity: 0;
+  }
+
+  input[type=radio]:checked+label:after {
+    opacity: 1;
+  }
+
+  .btn-block {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .auth-a {
+    width: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #A5A5A5;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .auth-a:hover {
+    text-decoration: none;
+  }
+
+  /* button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background: #cc7a00;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: #ff9800;
+      } */
+  @media (min-width: 568px) {
+
+    .name-item,
+    .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .name-item input,
+    .name-item div {
+      width: calc(50% - 20px);
+    }
+
+    .name-item div input {
+      width: 97%;
+    }
+
+    .name-item div label {
+      display: block;
+      padding-bottom: 5px;
+    }
+    
+  }
+  @media (max-width:998px){
+    #regForm{
+      width:50% ;
+    }
+  }
+  @media(max-width:567px){
+    #regForm{
+      width: 90%;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+</head>
+
+<body>
+
+
+
+  <div class="testbox">
+    <form action="" id="regForm">
+      <div style="width: 100%;">
+        <h3 class="create-acc">Create Account</h3>
+      </div>
+      <div id="callbacks" style="color: red;"></div>
+      <div class="item">
+        <input class="inp" id="username" type="text" name="username" placeholder="Username" />
+      </div>
+      <div class="item">
+        <input class="inp" id="firstname" type="text" name="name" placeholder="First Name" />
+      </div>
+      <div class="item">
+
+        <input class="inp" type="text" id="lastname" name="name" placeholder="Last Name" />
+      </div>
+      <div class="item">
+
+        <input class="inp" type="text" id="occupation" name="name" placeholder="Occupation" />
+      </div>
+
+      <div class="item">
+        <input class="inp" id="email" type="email" name="email" placeholder="Email" />
+      </div>
+      <div class="item">
+        <input class="inp" id="age" type="number" name="age" placeholder="Age" />
+      </div>
+      <div class="item">
+        <input class="inp" id="number" type="number" name="age" placeholder="Phone number" />
+      </div>
+      <div class="item">
+        <input class="inp" id="password1" type="password" name="password" placeholder="Password" />
+      </div>
+      <div class="item">
+        <input class="inp" id="password2" type="password" name="password2" placeholder="Confirm password" />
+      </div>
+      
+      
+      <div class="item">
+        <button type="submit" class="register-button">Register</button>
+
+      </div>
+
+      <div class="item">
+        <p>Already have an account?
+          <a href="{% url 'core:login'%}" style="text-decoration: none;">Sign in</a>
+        </p>
+      </div>
+
+    </form>
+
+  </div>
+  </div>
+
+  <script src="{% static 'js/register.js' %}"></script>
+  {% endblock %}

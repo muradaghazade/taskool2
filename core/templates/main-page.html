@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+  <style>
+
+    .inp {
+      width: 65%;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .register-button{
+      border: none;
+      padding: 15px;
+      border-radius: 5px;
+      color: white;
+      background-color: orange;
+      margin-bottom: 10px;
+    } 
+
+    .text-dark {
+      color: white !important;
+    }
+   
+
+    @media (max-width: 426px) {
+      .view-all {
+      font-size: 13px !important;
+    }
+    .all {
+      width: 90px;
+    }
+
+}.crt-btn{
+  border: none;
+    background-color: orange;
+    padding: 15px;
+    width: 200px;
+    border-radius: 15px;
+    outline: none;
+}
+.crt-p{
+  width: 80%;
+    margin-top: 50px;
+}
+.footer-scd{
+  width: 18%;
+}
+@media(max-width:600px){
+   .for-img{
+     height: 70%;
+   }
+   .crt-p{
+     width: 100%;
+   }
+   .footer-fst{
+     display: flex;
+     flex-direction: column;
+   }
+   .footer-scd{
+     width: 100%;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+   .footer-thr{
+     text-align: center;
+   }
+ }
+ @media(max-width:500px){
+   .for-img{
+     height: 70%;
+   }
+   .crt-p{
+     width: 100%;
+   }
+   .footer-fst{
+     display: flex;
+     flex-direction: column;
+   }
+ }
+
+ .internship-div{
+   width: 90%;
+   height: 300px;
+   background-image: url("../../static/img/clay-banks-b5S4FrJb7yQ-unsplash.jpg");
+   background-size: cover;
+   background-position: center;
+   padding: 10rem 0;
+   border-radius: 33px;
+ }
+  </style>
+{% endblock %}
+
+{% block content %}
+    {% comment %} <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/navbar.css" /> {% endcomment %}
+    
+   
+    <!-- End Links -->
+  </head>
+ 
+
+    <header class="header">
+      <div class="header__container">
+        <div class="header__title">
+          <div class="input">
+            <h2>Təcrübə edərək bilik qazan
+            </h2>
+            <p>
+              Praktiki tapşırıqlar və oyunlarla bacarıqlara yiyələnmək daha maraqlı və effektivdir.
+            </p>
+            <!-- <a href="{% url 'core:course-list' %}">
+            <button class="mt-3" style="border: none; border-radius: 5px; background-color: darkcyan; padding: 15px; color: white;">See Courses</button>
+          </a> -->
+          <form class="nav2-search" action="">
+          <input class="main-page-input nav2-input" type="text" placeholder="Looking for any tasks">
+        </form>  
+        </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header end -->
+    <section class="exam">
+      <div class="exam__container">
+        <div class="exam__title">
+          <h2 class="form mb-4"
+            >Praktika yönümlü dərslər
+        </h2>
+          <div class="all" style="border: 1px solid black; padding: 7px 13px; border-radius: 3px; color: black;">
+            <a href="{% url 'core:course-list' %}" class="view-all" style="color: black; text-decoration: none;">Hamısına bax</a>
+          </div>
+        </div>
+        <div class="">
+          <div class="row flexxx">
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr style="margin: 0;" />
+   
+
+    <!-- <section style="padding: 40px; display: flex;justify-content: center;">
+      <a style="margin-right: 50px; font-size: 17px; font-weight: normal;" href="{% url 'core:internship-list'%}"></a>
+      <div class="container-fluid internship-div row">
+          <div class="col-7" style="height: 100%;"></div>
+          <div class="col-5" style="height: 100%;margin-top: -60px;">
+            <h1 style="color: white; padding-left: 5px;">INTERNSHIPS</h1>
+            <h3 style="color: white; padding: 5px;">Find from around the world</h3>
+            <button style="margin-left: 5px; background: #FFDB64;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 4px; border: none; padding: 10px;"><a style="width: 100% ;margin-right: 50px; font-size: 17px; font-weight: normal; color: black;" href="{% url 'core:internship-list'%}">   Programs<i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a></button>
+          </div>
+        </div>
+    </section> -->
+    
+    <!-- <hr style="margin: 0;" /> -->
+    <!-- <section class=" d-flex" style="padding: 60px;justify-content: center; border: none !important;">
+      <div class="row container">
+        <div class="col-6">
+          <h3>Business Tasks</h3>
+          <h1 style="font-weight: bold;">Earn money or be hired</h1>
+          <br><br><br>
+         <a href="{% url 'core:btask-list' %}" class="view-all" style="background: #FFDB64;
+          border-radius: 10px;border: none; outline: none;color: black; text-decoration: none; padding: 30px;">View All</a>
+          <br><br><br>
+          <div class="d-flex" style="flex-direction: column; margin-top: 30px;">
+            <hr style="width: 100%;">
+            <hr style="width: 75%;">
+            <hr style="width:50%;">
+
+          </div>
+        </div>
+        <div class="col-6">
+          <img width="400px" class="ml-sm-5" src="../../static/img/Yusif.png" alt="">
+        </div>
+      </div>
+    </section>
+    <hr style="margin: 0;" /> -->
+
+
+    <section class="work" style="padding-top: 50px;">
+      <div class="work__container">
+        <div class="work__title row">
+          <div class="worktext col-md-5 col-12">
+            <h3>Gələcəyin insani kimlərdir ?</h3>
+            <p style="margin-top: 40px; width: 80%;">
+              1.    Tez öyrənərək düzgün qərar verə bilən</p>
+              <p style="margin-top: 40px; width: 80%;">
+                2.    Kənar tekid və məcburetmələr olmadan özünü yetişdirəbilən</p>
+                <p style="margin-top: 40px; width: 80%;">
+                  3.   Düşdüyü mühitdə rahatlıqla ünsiyyət qurabilən</p>
+                  <p style="margin-top: 40px; width: 80%;">
+                    4.   Gördüyü işi məsuliyyetlə və sevərək edə bilən</p>
+                    <p style="margin-top: 40px; width: 80%;">
+                      5.   Xoşbəxt olmasını bilən</p>
+          </div>
+          <div class="workvideo col-md-7 col-12" style="width: 100%;">
+            <iframe width="100%" height="400" style="border-radius: 5px;" src="https://www.youtube.com/embed/atL3Vfd8AMo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
+
+    <section id="for-study">
+      
+      <div class="container-fluid" style="padding-top: 25px;">
+        
+        <div class="row" style="padding: 30px;">
+          <div class="col-md-6 col-12 " style="padding-top: 15px;">
+            <div class="worktext">
+              <h3 style="color: rgb(245, 223, 76);">İstifadə qaydası</h3>
+              <p style="margin-top: 40px; width: 80%;">
+                A.    Qeydiyyatdan keçərək proqramlara nəzər salın</p>
+                <p style="margin-top: 40px; width: 80%;">
+                  B.   Şəxsi keyfiyyət və bacarıqlarınızı inkişaf etdirmək istədiyiniz sahəyə uyğun proqram seçin</p>
+                  <p style="margin-top: 40px; width: 80%;">
+                    C.    Proqram çərçivəsində üəllim və mütəxəssislərin video təlimatlarını dinləyin, biri-birindən maraqlı tapşırıqları zamanında icra etməkdən çəkinməyin</p>
+                    <p style="margin-top: 40px; width: 80%;">
+                      D.   Taqşırıqları tamamlayın və istədiyiniz nəticəyə nail olun</p>
+                     
+            </div>
+          </div>
+          <div class="col-md-6 col-12" style="width: 100px;">
+            <img class="for-img" style="width: 75%; height: 100%; margin: 0 auto;" src="{% static 'img/How we work 1.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    
+
+    <section style="background-color: rgb(252, 240, 216); padding: 25px; max-height: 800px;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-12" style="text-align: right; margin-top: 50px; display: flex; justify-content: center;">
+            <img src="https://images.unsplash.com/photo-1502945015378-0e284ca1a5be?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="" style="width: 370px; border-radius: 5px;">
+          </div>
+          <div class="col-md-6 col-12" style="padding-left: 40px;">
+            <h2>Müəllimlər üçün</h2>
+            <p class="crt-p" style="width: 400px; margin-top: 50px;">Daha çox dinləyici kütləsinə nail olmağın ən asan yolu, platformamızda praktik tapşırıq əsaslı təlim və tədris proqramları yaratmaqdır. Platformamızda yaradılan virtual metodolji vasitələrdən istifadə etməklə maraqlı və əyləncəli proqramlar yaradaraq şagir və tətləbələrinizi öyrənməyə dahada həvəsli edəcəksiniz. Unutmayın, şagirdlərinizin uğuru Sizin uğurunuzdur.</p>
+            <a style="outline: none; border: none;" href=""><button class="crt-btn">Gözdən keçir</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+{% endblock %}
+
+{% block js %}
+    
+<script>
+  localStorage.removeItem('search_result')
+</script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+
+{% endblock %}

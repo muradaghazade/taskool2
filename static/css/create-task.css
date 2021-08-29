@@ -1,0 +1,22 @@
+.first-side {
+    background-color: #f65058ff;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.voice-attache {
+    margin-top: 50px;
+    /* margin-left: 5px; */
+}
+.voice-desc {
+    padding: 20px;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+    /* height: 100%; */
+}
+.header {
+    /* font-size: 35px; */
+}
+.times {
+    margin-top: 80px;
+}

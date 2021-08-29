@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/create_question.css' %}">
+    
+
+
+{% endblock %}
+
+{% block content %}
+<!-- <div class="created text-center">
+    
+    <div class="for-image">
+        <i class="far fa-plus-square" style="font-size: 90px; color: grey;"></i>
+    </div>
+    
+</div>  -->
+
+<div class="row" style="margin: 0 !important;">
+    <div id="left-side-div-pro" class="left-side-pro col-3">
+        <div>
+            <p class="username-name">Username</p>
+
+        </div>
+        <ul class="left-ul">
+            <li class="mt-4" style="padding: 20px; ">
+                <a href="" class="sidebar-items left-li">
+                    Created
+                </a>
+            </li>
+            <li class="mt-4" style="padding: 20px; ">
+                <a href="" class="sidebar-items left-li">
+                    Shared
+                </a>
+            </li>
+            <li class="mt-4" style="padding: 20px; ">
+                <a href="" class="sidebar-items left-li">
+                    Create Course
+                </a>
+            </li>
+            <li class="mt-4" style="padding: 20px; ">
+                <a href="{% url 'core:edit-profile' %}" class="sidebar-items left-li">
+                    Edit Profile
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="left-side-div" class="left-side col-3">
+        <div class="left-ques d-flex mt-5 justify-content-between">
+            <h3 class="left-ques-h">Question</h3> 
+            <a href="">
+            <button class="left-ques-button">+</button></a>  
+        </div>
+        <div class="left-tools">
+            <div class="left-ques d-flex justify-content-between">
+                <h5 class="left-ques-h">- Text</h5>
+                <button class="left-ques-button" id="text1">+</button>
+            </div>
+            <!-- <div class="left-ques d-flex justify-content-between">
+                <h5 class="left-ques-h">- Audio</h5>
+                <button class="left-ques-button">+</button>
+            </div> -->
+            <div class="left-ques d-flex justify-content-between">
+                <h5  class="left-ques-h">- Video</h5>
+                <button id="video1" class="left-ques-button">+</button>
+            </div>
+            <div class="left-ques d-flex justify-content-between">
+                <h5 class="left-ques-h">- Picture</h5>
+                <button id="image1" class="left-ques-button">+</button>
+            </div>
+            <div class="left-ques d-flex justify-content-between">
+                <h5 class="left-ques-h">- URL</h5>
+                <button id="link1" class="left-ques-button">+</button>
+            </div>
+        </div>
+
+        <div class="left-ques d-flex mt-5 justify-content-between">
+            <h3 class="left-ques-h">Answer</h3>   
+            <button class="left-ques-button">+</button>
+        </div>
+        <div class="left-tools">
+            {% for answer in answer_types %}
+            <div class="left-ques d-flex justify-content-between" id="{{answer.id}}">
+                <h5 class="left-ques-h">- {{answer.title}}</h5>
+                <button id="asnwer{{answer.id}}" class="left-ques-button vur">+</button>
+            </div>
+           {% endfor %}
+        </div>
+    </div>
+    
+    <div id="right-side" class="col-9 right-side">
+        <div style="display: flex; justify-content: flex-end; margin: 23px;">
+            <a href="">
+            <button style="border: none; background-color: rgb(245, 223, 76); padding: 10px; border-radius: 5px;">Add next +</button>
+        </a>
+        </div>
+        <h2 class="text-center mt-5" style="color: #666;">Create Question</h2>
+
+        <form class='form_subject text-center question_form' action="/">
+        
+        
+            <div id="is_auto" class="item mt-3 ">
+                <label style="color: #666;" for="name">For automating checking answer press <b>Auto</b> for personaly press <b>Person</b><span></span></label>
+                <div class="name-item">
+                    <div class="yes auto btn btn-secondary">
+                        Auto
+                    </div>
+                    <div class="no auto btn btn-secondary">
+                        Person
+                    </div>
+                </div>
+        
+            </div>
+            <div id="question-title" style="display: none;" class="item mt-3">
+                <label for="name">Question Title<span>*</span></label>
+                <div class="name-item">
+                    <input class="input p-2" id="title" type="text" name="title" placeholder="Title" />
+        
+                </div>
+            </div>
+        
+            <div id="question-text" style="display:none ;" class="item mt-3">
+                <label for="name">Question<span>*</span></label>
+                <div class="name-item">
+                    <textarea id="question" style="width: 450px;;" name="question" cols="30" rows="10"></textarea>
+        
+                </div>
+        
+            </div>
+        
+            <div style="display: none;" class="item mt-3 correct_answer_div">
+                <label for="name">Correct answer<span></span></label>
+                <div class="name-item">
+                    <input style="width: 30%;height:40px;" id="correct_answer" class="correct_answer" type="text" name="correct_answer">
+                </div>
+            </div>
+            <div class="options_div" style="display: none;">
+                <div class="item mt-3">
+                    <label for="name">Option1<span>*</span></label>
+                    <div class="name-item">
+                        <input id='option1' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+        
+                    </div>
+                </div>
+                <div class="item mt-3">
+                    <label for="name">Option2<span>*</span></label>
+                    <div class="name-item">
+                        <input id='option2' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+        
+                    </div>
+                </div>
+                <div class="item mt-3">
+                    <label for="name">Option3<span>*</span></label>
+                    <div class="name-item">
+                        <input id='option3' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+        
+                    </div>
+                </div>
+                <div class="item mt-3">
+                    <label for="name">Option4<span>*</span></label>
+                    <div class="name-item">
+                        <input id='option4' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+        
+                    </div>
+                </div>
+                <div class="item mt-3">
+                    <label for="name">Option5<span>*</span></label>
+                    <div class="name-item">
+                        <input id='option5' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+        
+                    </div>
+                </div>
+            </div>
+        
+            <div style="display: none;" class="other mt-5">
+                <div id="video-div" style="display: none;" class="item mt-3 mb-5 correct_answer1">
+                    <span class=" mt-3 mb-3 click_buttons" >Upload video</span>
+                    <div class="name-item mt-3">
+                        <input  id="video" class="file1" type="file" name="video">
+                    </div>
+        
+                </div>
+                <div id="image-div" style="display: none;" class="item mt-3 mb-5 correct_answer1">
+                    <span class=" mt-3 mb-3 click_buttons" >Upload Image</span>
+                    <div class="name-item mt-3">
+                        <input  id="image" class="file1" type="file" name="image">
+                    </div>
+        
+                </div>
+                <div id="link-div" style="display: none;" class="item mt-3 mb-5 correct_answer1">
+                    <span class=" mt-3 mb-3 click_buttons" >Upload link</span>
+                    <div class="name-item mt-3">
+                        <input  id="link" class="file1" type="text" name="link">
+                    </div>
+        
+                </div>
+            </div>
+        
+
+            <div id="answer-here" style="display: none; border: 1px solid gray;
+            width: 700px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+            border-radius: 5px;">
+                <h2 style="color: #666;" class="mt-5">Create Answer Form:</h2>
+            </div>
+        
+        
+        
+            <button id="save-btn" style="display: none; margin: 0 auto;" class='save mt-5' type="submit">Save</button>
+        
+            <div class="next-div d-flex justify-content-center mt-5">
+                <button class="next">Next</button>
+            </div>
+            
+            <!-- <div id="done-btn" style="text-align: center; display: none;
+            ">
+                <a href="{% url 'core:course-list' %}">
+                    <button style="border: none;
+                    padding: 18px;
+                    border-radius: 10px;
+                    color: white;
+                    background-color: darkcyan;
+                    margin-bottom: 20px;">
+                        Done
+                    </button>
+                </a>
+            </div> -->
+            
+       
+        </form>
+        <div id="question-success" style="display: flex; justify-content: center;">
+
+        </div>
+        <div style="display: flex; justify-content: center;">
+            
+        <a href="{% url 'core:profile' %}"> <button id="done" style="
+            display: none;
+            border: none;
+            padding: 18px;
+            border-radius: 10px;
+            color: white;
+            background-color: darkcyan;
+            margin-bottom: 20px;">Done</button></a>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block js %}
+<script src="{% static 'js/create-question.js' %}"></script>
+
+{% endblock %}

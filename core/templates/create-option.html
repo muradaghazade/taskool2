@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<style>
+    .created {
+        width: 100%;
+        height: 100px;
+    }
+    
+    .save{
+        width: 150px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background: #cc7a00;
+        font-size: 16px;
+        color: #fff;
+       
+    }
+    .next{
+        width: 150px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background: #cc7a00;
+        font-size: 16px;
+        color: #fff;
+        display: none;
+    }
+    .auto{
+        width: 50px;
+        height: 50px;
+        background-color: #cc7a00;
+        border-radius: 2px;
+        padding: 5px 10px 5px 10px;
+        color: white;
+        cursor: pointer;
+    }
+    .next{
+        width: 150px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background: #cc7a00;
+        font-size: 16px;
+        color: #fff;
+        display: none;
+    }
+   
+    
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-5">Create Question</h1>
+<!-- <div class="created text-center">
+
+    <div class="for-image">
+        <i class="far fa-plus-square" style="font-size: 90px; color: grey;"></i>
+    </div>
+
+</div>  -->
+
+
+<form  class='form_option text-center' action="/">
+
+
+
+    <div class="item mt-3">
+        <label for="name">Option1<span>*</span></label>
+        <div class="name-item">
+            <input id='option1' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+
+        </div>
+    </div>
+    <div class="item mt-3">
+        <label for="name">Option2<span>*</span></label>
+        <div class="name-item">
+            <input id='option2' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+
+        </div>
+    </div>
+    <div class="item mt-3">
+        <label for="name">Option3<span>*</span></label>
+        <div class="name-item">
+            <input id='option3' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+
+        </div>
+    </div>
+    <div class="item mt-3">
+        <label for="name">Option4<span>*</span></label>
+        <div class="name-item">
+            <input id='option4' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+
+        </div>
+    </div>
+    <div class="item mt-3">
+        <label for="name">Option5<span>*</span></label>
+        <div class="name-item">
+            <input id='option5' class="input option p-2" id="name" type="text" name="title" placeholder="Title" />
+
+        </div>
+    </div>
+    
+
+    
+
+
+    <button class='save mt-5' type="submit">Save</button>
+
+
+</form>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'js/create-option.js' %}"></script>
+
+{% endblock %}

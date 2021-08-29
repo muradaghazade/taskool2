@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(228, 220, 220) !important;   
+}
+
+.ulclass{
+    background-color: white;
+    height: 400px;
+    border-radius: 10px;
+}
+li{
+    list-style: none;
+}
+li a{
+    font-size: 25px;
+    text-decoration: none !important;
+    color: black;
+}
+/* li a:hover{
+    color: rgba(255, 230, 0, 0.856);
+} */
+.created{
+    height: 150px;
+    width: 100px;
+}
+.created-section{
+    height: 200px;
+}
+.for-image{
+    height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fas{
+    font-size: 140px;
+}
+.for-image img{
+    height: 100%;
+}
+.border{
+    height: 10px;
+    background-color: black;
+}
+.card-body{
+    background-color:rgba(255, 230, 0, 0.856) !important;
+}
+h2{
+    color:#808080
+}

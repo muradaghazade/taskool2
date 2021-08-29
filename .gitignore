@@ -1,0 +1,17 @@
+.venv/
+venv
+db.sqlite
+__pycache__/
+*/__pycache__/
+*.pyc
+*/*.pyc
+*.sql
+postgresdb/
+redisdb/
+media/
+/media
+media
+taskilled.crt
+taskilled.csr
+merchant_name.key
+nopassword.key
