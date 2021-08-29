@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'taskilled.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 import time
-time.sleep(1)
+time.sleep(2)
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
