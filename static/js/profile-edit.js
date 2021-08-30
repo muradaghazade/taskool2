@@ -49,7 +49,7 @@ fetch(getUsersUrl, {
   .then((resp) => resp.json())
   .then((new_data) => {
     console.log(new_data);
-    document.location.href = '/'
+    document.location.href = '/profile'
   })
 }
 
