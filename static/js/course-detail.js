@@ -5,12 +5,20 @@ url = `/api/v1/core/course/${pk}`;
 console.log(url);
 
 
+function renderStars(n){
+  let stars = $('.rating-star')
+  for(let i=0;i<n;i++){
+    $(stars[i]).css('color','yellow')
+  }
+}
+
 
 getCourseDetail = () => {
     fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
+      renderStars(data['get_avg_rating'])
       document.querySelectorAll(".the-title").forEach(element => {
           element.innerHTML = data.title
       });

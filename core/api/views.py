@@ -1,10 +1,11 @@
 from django.db.models import query
 import requests
-from rest_framework.generics import CreateAPIView, ListAPIView
-from core.models import Course, Subject, Question , Option, Order, UserAnswer, AnswerType
+from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView
+from core.models import Course, Rating, Subject, Question , Option, Order, UserAnswer, AnswerType
 from rest_framework.views import APIView
 from .serializers import (
-    CourseSerializer, 
+    CourseSerializer,
+    RatingSerializer, 
     SubjectSerializer, 
     QuestionSerializer, 
     OptionSerializer, 
@@ -13,7 +14,9 @@ from .serializers import (
     CreateCourseSerializer,
     AnswerTypeSerializer
 )
-from rest_framework import status
+
+from rest_framework import serializers, status,permissions
+from rest_framework.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 import os
@@ -292,3 +295,20 @@ class UserAnswerDetailAPIView(APIView):
         user_answer = get_object_or_404(UserAnswer, pk=kwargs['id'])
         user_answer.delete()
         return Response("User Answer deleted", status=status.HTTP_204_NO_CONTENT)
+    
+class RatingListCreateAPIView(ListCreateAPIView):
+    serializer_class = RatingSerializer
+    permission_classes = (permissions.IsAuthenticated, )
+    queryset = Rating.objects.all()
+
+    def perform_create(self, serializer):
+        course = serializer.validated_data['course']
+        if not Order.objects.filter(course=course,user=self.request.user,successfuly_paid=True).exists():
+            raise PermissionDenied(detail='You must be bought this course')
+        rat = Rating.objects.filter(course=course, author=self.request.user).first()
+        if not rat:
+            serializer.validated_data['author'] = self.request.user
+            serializer.save()
+        else:
+            rat.rating = serializer.validated_data['rating']
+            rat.save()
