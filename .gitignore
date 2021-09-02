@@ -11,3 +11,5 @@ redisdb/
 media/
 /media
 media
+*/migrations
+/postgre_db/
