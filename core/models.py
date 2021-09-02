@@ -52,7 +52,10 @@ class Course(models.Model):
     
     def get_avg_rating(self):
         rat_numbers = list(map(lambda e: e.rating, self.ratings.all()))
-        return sum(rat_numbers)//len(rat_numbers)
+        if rat_numbers:
+            return sum(rat_numbers)//len(rat_numbers)
+        else:
+            return 0
 
 class Category(models.Model):
     title = models.CharField('Title',max_length=50, null=True)
