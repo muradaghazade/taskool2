@@ -192,7 +192,7 @@ class Rating(models.Model):
     rating = models.PositiveSmallIntegerField('rating',choices=RATING_CHOICES)
     course = models.ForeignKey("Course", on_delete=models.CASCADE, db_index=True, related_name='ratings')
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f'{self.author} > {self.course} rating'
     
     class Meta:

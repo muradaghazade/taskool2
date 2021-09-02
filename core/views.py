@@ -35,6 +35,14 @@ class CourseDetailView(DetailView):
     context_object_name = "course"
     template_name = 'course_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            rating = Rating.objects.filter(course=self.get_object(),author=self.request.user).first()
+            if rating:
+                context['rating'] = rating
+        return context
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         print(request.POST)

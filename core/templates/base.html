@@ -54,9 +54,6 @@
 
 
 
-    {% block js %}
-    {% endblock %}
-
     <script src="{% static 'js/navbar.js' %}"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -66,6 +63,10 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    {% block js %}
+    {% endblock %}
+
+
     
 </body>
 

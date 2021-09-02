@@ -11,6 +11,9 @@
     
     <div class="container ">
         <p class="d-none" id="page-pk">{{course.pk}}</p>
+        
+        <p class="d-none" id='rating-obj' data-rating='{% if rating %}{{rating.rating}}{%else%}0{% endif %}' ></p>
+        
         <div class="row">
             <div class="col-8" style="margin-top: 25px;">
                 <div class="section__language">
@@ -98,6 +101,15 @@
                         <h4 class="px-3 pt-3"><b class="course-price"> </b><small style="color: white;"> for 2 weeks</small></h4>
                     </div>
                     <div class="p-3">
+                        <div id='rate' class="mb-3 d-none">
+                            <i data-value='1' class="fas fa-star rate-star"></i>
+                            <i data-value='2' class="fas fa-star rate-star"></i>
+                            <i data-value='3' class="fas fa-star rate-star"></i>
+                            <i data-value='4' class="fas fa-star rate-star"></i>
+                            <i data-value='5' class="fas fa-star rate-star"></i>
+
+                        </div>
+
                         <div class="d-flex justify-content-between">
                             <h5>Course</h5>
                             <h5 class="course-price"></h5>
@@ -166,7 +178,10 @@
         </div>
     </div>
 </div>
+    {% endblock %}
+    {% block js %}
     <script src="{% static 'js/course-detail.js' %}"></script>
+
     {% endblock %}
 
 
