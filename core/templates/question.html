@@ -231,7 +231,24 @@
       display: inline;
   }
 }
+.card-header{
+    background-color: #525252;
+color: white;
 
+}
+.card-header button{
+    color: white;
+}
+.card-header button:hover{
+    color: white;
+}
+.card{
+    border-radius: 0;
+    border-color: #343a40;
+}
+.card-body{
+    background-color: #343a40;
+}
 
 </style>
 {% endblock %}
@@ -251,10 +268,32 @@
           </div>
     </div>
     <button id="chixma" onclick="myfunction2()">X</button>
+    <div id='courseobj' data-week='{{course.course_deadline}}' class="d-none">{{course.id}}</div>
     <div class="cccccc">
-        <ul id="questions-ul">
+        <div class="accordion" id="weeks">
+            {% for i in week_range %}
+
+            <div class="card d-none" id='cardweek{{i}}'>
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#week{{i}}" aria-expanded="true" aria-controls="week{{i}}">
+                      Week {{i}} <i class="fas fa-chevron-down"></i>
+                </button>
+                </h2>
+              </div>
+          
+              <div id="week{{i}}" class="collapse" aria-labelledby="headingOne" data-parent="#weeks">
+                <div id='ques' class="card-body">
+                    <!-- <a style="color: white; text-decoration: none; " href="#"><div class="d-flex flex-column justify-content-center p-2" style="border:1px solid #525252;">
+                        <h6>Question title</h6>
+                        <p style="margin: 0;">question desription</p>
+                    </div></a> -->
+                </div>
+              </div>
+            </div>
+            {%endfor%}
             
-        </ul>
+          </div>
     </div>
 </div>
 <div id="pk" class="d-none">{{question.pk}}</div>
@@ -340,13 +379,13 @@
     </a>
 </div>
 <h1 id="success-here"></h1>
-<script src="{% static 'js/question-answer.js' %}"></script>
 <script src="{% static 'js/orderid.js' %}"></script>
 
 
 {% endblock %}
 
 {% block js %}
+<script src="{% static 'js/question-answer.js' %}"></script>
 <script src="ckeditor5-build-classic/ckeditor.js"></script>
 
 <script>

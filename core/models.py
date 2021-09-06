@@ -78,7 +78,7 @@ class Question(models.Model):
     # answer_file = models.FileField('File',upload_to='files/', null=True, blank=True)
     # audio_record = models.FileField('File',upload_to='files/', null=True, blank=True)
     answer_type = models.ManyToManyField('AnswerType',  verbose_name=("Answer Type"), db_index=True, related_name="answer_type_question", null=True, blank=True)
-    
+    week = models.IntegerField(default=1)
     
     is_auto = models.BooleanField('Is auto', default=1)
     is_success = models.BooleanField('Is succes', default=0)

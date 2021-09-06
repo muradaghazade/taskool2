@@ -216,7 +216,6 @@ async function answerOpenQuestion(video=null, image=null, text="") {
 
       }
       console.log(data, "here");
-console.log(image, video, text, "adaaaaaam");
       if (image != null) {
         data.image = await toBase64(image)
 
@@ -293,22 +292,30 @@ document.getElementById("open-form").addEventListener('submit', (e) => {
 
 
 getAllQuestions = () => {
+  week_n = $('#courseobj').data('week');
+
+
   fetch('/api/v1/core/all-questions/')
   .then((resp) => resp.json())
   .then((data) => {
-    console.log(theGreatSubjectId);
 
     data.forEach(e => {
       if(e.subject == theGreatSubjectId) {
-        console.log(e);
-        document.getElementById('questions-ul').innerHTML += `
-        <a href="/question/${e.id}" style="color: white; text-decoration: none;">
-        <li class="row li-class">
-                <h4 class="col-10 title-class">${e.title}</h4>
-                <p class="ml-1 col-12 type-class">${e.description}</p>
-                </li>
-                </a>
+        document.getElementById(`week${e.week}`).parentElement.classList.remove('d-none')
+        document.getElementById(`week${e.week}`).children[0].innerHTML += `
+        <a style="color: white; text-decoration: none; " href="/question/${e.id}"><div class="d-flex flex-column justify-content-center p-2" style="border:1px solid #525252;">
+                        <h6>${e.title}</h6>
+                        <p style="margin: 0;">${e.description}</p>
+                    </div></a>
         `
+        // document.getElementById('questions-ul').innerHTML += `
+        // <a href="/question/${e.id}" style="color: white; text-decoration: none;">
+        // <li class="row li-class">
+        //         <h4 class="col-10 title-class">${e.title}</h4>
+        //         <p class="ml-1 col-12 type-class">${e.description}</p>
+        //         </li>
+        //         </a>
+        // `
       }
     })
     

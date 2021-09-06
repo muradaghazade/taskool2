@@ -68,7 +68,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ('id', 'title', 'description', 'image', 'correct_answer','video','is_auto','is_success','subject', 'answer_type' )
+        fields = ('id', 'title', 'description', 'image', 'correct_answer','video','is_auto','is_success','subject', 'answer_type','week' )
 
     # def create(self, validated_data):
     #     question = Question.objects.create(
