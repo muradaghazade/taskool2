@@ -164,18 +164,23 @@ document.addEventListener('click', (e) => {
  else if (e.target.getAttribute('id') == 'delete') {
   pk = e.target.parentElement.parentElement.getAttribute("id")
   console.log(pk);
-  fetch(`/api/v1/core/course/${pk}/`, {
-    method: "DELETE",
-    headers: {
-        "Content-type": "application/json",
-    }
-  })
-    .then((resp) => resp.text())
-    .then((data) => {
-      // console.log(data, 'DELETED');
-      
-      e.target.parentElement.parentElement.style.display = "none"
+  confirmation = confirm("Are you sure you want to delete this question?")
+
+  if (confirmation == true) {
+    fetch(`/api/v1/core/course/${pk}/`, {
+      method: "DELETE",
+      headers: {
+          "Content-type": "application/json",
+      }
     })
+      .then((resp) => resp.text())
+      .then((data) => {
+        // console.log(data, 'DELETED');
+        
+        e.target.parentElement.parentElement.style.display = "none"
+      })
+  }
+  
  }
 })
 

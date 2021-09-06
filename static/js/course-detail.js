@@ -141,11 +141,16 @@ let jwt = `Bearer ${localStorage.getItem("token")}`
   })
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data, 'yeaaaa');
+      console.log(data);
       // document.getElementById("congrats-div").innerHTML = `<p style="color: green;">You successfuly bought this course!</p>`
-      // document.getElementById("start-course").style.display = 'block'
       // https://e-commerce.kapitalbank.az/index.jsp?ORDERID=10253&SESSIONID=1661DD2BD23BC67D6CBF84FE847B369F
-      document.location.href = `${data.url}?ORDERID=${data.order_id}&SESSIONID=${data.session_id}`
+      if (data != 'free'){
+      document.location.href = `{data.url}?ORDERID=${data.order_id}&SESSIONID=${data.session_id}`
+      }
+      else {
+      document.getElementById("start-course").style.display = 'block'
+        document.querySelector('#order-button').style.display = 'none'
+      }
     })
 
         })

@@ -195,13 +195,18 @@ class OrderCreateAPIView(CreateAPIView):
         id = self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         # self.object = self.get_object()
-        print(id)
+        print( Order.objects.filter(pk=id), 'this is id')
+        Order.objects.filter(pk=id).update(successfuly_paid=1)
         # order = get_object_or_404(Course, pk=request.data['user'])
         course = Course.objects.get(pk=int(request.data['course']))
         price = course.price
         # 3136323935333336313333323230303030303030
         # 3136323935333431303935373030303030303030
-        data = f"""<?xml version="1.0" encoding="UTF-8"?>
+        if price == 0:
+            print('This is free!')
+            return Response("free", status=status.HTTP_201_CREATED, headers=headers)
+        else:
+            data = f"""<?xml version="1.0" encoding="UTF-8"?>
             <TKKPG>
                 <Request>
                         <Operation>CreateOrder</Operation>
@@ -230,6 +235,7 @@ class OrderCreateAPIView(CreateAPIView):
             'session_id': session_id
         }
         return Response(final_resp, status=status.HTTP_201_CREATED, headers=headers)
+        
 
     # def post(self, request, *args, **kwargs):
     #     order = self.create(request, *args, **kwargs)

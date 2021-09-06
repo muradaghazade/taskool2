@@ -92,6 +92,10 @@ getQuestionData = () => {
       <img style="width: 400px; margin-right: 150px;" src="${data.image}" />
       `
         }
+
+        // if (data.url) {
+          document.getElementById('for-url').innerHTML = `<a href="${data.url}">${data.url}</a>`
+        // }
       
 
       }
