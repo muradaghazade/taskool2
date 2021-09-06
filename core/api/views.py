@@ -1,7 +1,10 @@
+from django.db import models
 from django.db.models import query
+from django.http import  Http404
 import requests
-from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView
-from core.models import Course, Rating, Subject, Question , Option, Order, UserAnswer, AnswerType
+from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView,RetrieveAPIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from core.models import Comment, Course, Rating, Subject, Question , Option, Order, UserAnswer, AnswerType
 from rest_framework.views import APIView
 from .serializers import (
     CourseSerializer,
@@ -12,7 +15,9 @@ from .serializers import (
     OrderSerializer,
     UserAnswerSerializer,
     CreateCourseSerializer,
-    AnswerTypeSerializer
+    AnswerTypeSerializer,
+    CommentSerializer,
+    CommentCreateSerializer
 )
 
 from rest_framework import serializers, status,permissions
@@ -312,3 +317,25 @@ class RatingListCreateAPIView(ListCreateAPIView):
         else:
             rat.rating = serializer.validated_data['rating']
             rat.save()
+
+class CommentAPIView(ListCreateAPIView):
+    model = Comment
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    queryset = Comment.objects.all()
+    
+    def get_queryset(self):
+        queryset = Comment.objects.filter(question = self.kwargs['id'])
+        return queryset
+    
+    def get_serializer_class(self):
+        
+        if self.request.method == 'POST':
+            return CommentCreateSerializer
+        elif self.request.method == 'GET':
+            return CommentSerializer
+        
+        
+        
+    
+
+    
