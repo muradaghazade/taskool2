@@ -3,3 +3,9 @@ from .models import *
 # Register your models here.
 
 admin.site.register([Course,Question,Option,Subject,UserAnswer,Order,Category, AnswerType])
+
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ('author','course','rating')
+    search_fields = ('author__username','course__title')
+    list_filter = ('rating',)

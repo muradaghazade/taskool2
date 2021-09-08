@@ -5,12 +5,20 @@ url = `/api/v1/core/course/${pk}`;
 console.log(url);
 
 
+function renderStars(n){
+  let stars = $('.rating-star')
+  for(let i=0;i<n;i++){
+    $(stars[i]).css('color','yellow')
+  }
+}
+
 
 getCourseDetail = () => {
     fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
+      renderStars(data['get_avg_rating'])
       document.querySelectorAll(".the-title").forEach(element => {
           element.innerHTML = data.title
       });
@@ -164,8 +172,53 @@ document.getElementById("order-button").addEventListener('click', () => {
   createOrder()
 })
 
+$('.rate-star').hover(function(e){
+  n = $(e.target).data('value') -1;
+  stars = $('.rate-star');
+  $(stars).css('color','white');
+  for (let i=0;i<=n;i++){
+    $(stars[i]).css('color','yellow')
+  }
+})
 
+function myRating(n=false){
+  if(!n){
+    n = $('#rating-obj').data('rating');
+  }
+  if (n>0){
+    stars = $('.rate-star');
+    for (let i=0;i<n;i++){
+      $(stars[i]).css('color','yellow')
+    }
+  }
+}
 
+$('#rate').on('mouseleave',function(){
+  $('.rate-star').css('color','white')
+  myRating()
+})
+$('.rate-star').click(async function(e){
+  n = $(e.target).data('value');
+  let jwtt = `Bearer ${localStorage.getItem("token")}` 
+  data = {
+    'course':pk,
+    'rating':n
+  }
+  response = await fetch('/api/v1/core/rating/',{
+    method: "POST",
+    headers: {
+        "Content-type": "application/json",
+        "Authorization": jwtt
+    },
+    body:JSON.stringify(data)
+  })
+  res_status = await response.status;
+  if(res_status==201){
+    $('#rating-obj').data('rating',n)
+    myRating()
+  }
+
+})
 let jwt = `Bearer ${localStorage.getItem("token")}`
     console.log(jwt);
     fetch(`/api/v1/user-data/`, {
@@ -185,6 +238,8 @@ let jwt = `Bearer ${localStorage.getItem("token")}`
             console.log(orders);
             orders.forEach(e => {
               if (e.course == pk && e.user == data.id && e.successfuly_paid == true) {
+                document.getElementById('rate').classList.remove('d-none')
+                myRating()
                console.log(e);
               document.getElementById("congrats-div").innerHTML = `<p style="color: green;">You have bought this course!</p>`
               // document.location.href = '/core/login'

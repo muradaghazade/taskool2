@@ -29,6 +29,38 @@ const toBase64 = file => new Promise((resolve, reject) => {
   });
 
 
+
+
+getCourseWeeks = () => {
+    console.log(localStorage.getItem('subject_id'));
+    data = {
+        subject:localStorage.getItem('subject_id')
+    }
+    fetch('/api/v1/core/course-weeks/', {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((resp) => resp.json())
+        .then((data) => {
+            let weeks = data[0]['course_deadline']
+            for (let i = 1; i <= weeks; i++) {
+                console.log(i);
+                document.getElementById('menu').innerHTML += `
+                <span>Week ${i}</span>
+                <input type="radio" name="week" id="${i}" class="dropdown-item" value="Week ${i}">
+                `
+            }
+        })
+        
+}
+
+getCourseWeeks()
+
+
+
   
 yes_btn.addEventListener('click', event => {
     correct_ans.style = 'display:block'
@@ -117,7 +149,7 @@ questionUrl = '/api/v1/core/question/';
 optionUrl = '/api/v1/core/option/';
 
 
-questionCreate = (title, question,correct_answer,subject_id,options, is_auto) => {
+questionCreate = (title, question,correct_answer,subject_id,options, is_auto, week) => {
     
     data = {
         title: title,
@@ -125,7 +157,8 @@ questionCreate = (title, question,correct_answer,subject_id,options, is_auto) =>
         correct_answer:correct_answer,
         is_auto:is_auto,
         is_success:0,
-        subject:subject_id
+        subject:subject_id,
+        week:week
         
     }
     fetch(questionUrl, {
@@ -150,7 +183,7 @@ questionCreate = (title, question,correct_answer,subject_id,options, is_auto) =>
         })
 }
 
-async function manualQuestionCreate(title, question,image = null, video = null, edu_url,subject_id, is_auto, answer_type) {
+async function manualQuestionCreate(title, question,image = null, video = null, edu_url,subject_id, is_auto, answer_type, week) {
     // console.log(image);
     // console.log(video);
     // console.log(answer_type);
@@ -161,7 +194,8 @@ async function manualQuestionCreate(title, question,image = null, video = null, 
         is_auto:is_auto,
         is_success:0,
         subject:subject_id,
-        answer_type: answer_type
+        answer_type: answer_type,
+        week: week
         
     }
     if (image != null) {
@@ -246,8 +280,11 @@ document.querySelectorAll('.vur').forEach(e => {
     })
 })
 
+
+
 document.querySelector(".question_form").addEventListener('submit', (e) => {
     e.preventDefault()
+    let week;
     let title = document.getElementById('title').value;
     let question = document.getElementById('question').value
     let correct_answer = document.getElementById('correct_answer').value;
@@ -256,6 +293,17 @@ document.querySelector(".question_form").addEventListener('submit', (e) => {
     let link = document.getElementById('link').value;
     var inputs = document.querySelectorAll('.option')
     subject_id = localStorage.getItem('subject_id')
+
+    console.log(document.querySelectorAll('.dropdown-item'));
+
+    document.querySelectorAll('.dropdown-item').forEach(e => {
+        if (e.checked) {
+            // console.log(e.getAttribute('id'));
+            week = e.getAttribute('id')
+        }
+    })
+
+    console.log(week, 'weeeek');
 
     var options = []
     
@@ -270,7 +318,7 @@ document.querySelector(".question_form").addEventListener('submit', (e) => {
     
 
     if(document.querySelector('.correct_answer_div').style.display == 'block'){
-        questionCreate(title,question,correct_answer,subject_id, options, is_auto)
+        questionCreate(title,question,correct_answer,subject_id, options, is_auto, week)
         console.log('bura girdim');
         // for (let i of options) {
         //     if (i != "") {
@@ -282,7 +330,7 @@ document.querySelector(".question_form").addEventListener('submit', (e) => {
     else if(other.style.display == 'block'){
         // console.log(answer_type_list);
         // console.log('haaa');
-        manualQuestionCreate(title, question, image, video, link,subject_id, is_auto, answer_type_list)
+        manualQuestionCreate(title, question, image, video, link,subject_id, is_auto, answer_type_list, week)
     }
    
     

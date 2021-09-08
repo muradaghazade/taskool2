@@ -35,6 +35,14 @@ class CourseDetailView(DetailView):
     context_object_name = "course"
     template_name = 'course_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            rating = Rating.objects.filter(course=self.get_object(),author=self.request.user).first()
+            if rating:
+                context['rating'] = rating
+        return context
+
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         print(request.POST)
@@ -66,15 +74,15 @@ class QuestionView(DetailView):
     def get(self, request, *args, **kwargs):
         token = request.COOKIES['token']
         decoded = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-        print(decoded)
         order = Order.objects.filter(user=decoded['user_id']).filter(course=self.get_object().subject.course.id)
-        print(order.first().successfuly_paid)
         if order.first() == None:
             raise PermissionDenied
         elif order.first().successfuly_paid != True:
             raise PermissionDenied
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
+        context['course'] = self.get_object().subject.course
+        context['week_range'] = range(1,int(self.get_object().subject.course.course_deadline)+1)
         return self.render_to_response(context)
     
     # def dispatch(self, request, *args, **kwargs):

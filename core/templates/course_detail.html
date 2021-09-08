@@ -11,6 +11,9 @@
     
     <div class="container ">
         <p class="d-none" id="page-pk">{{course.pk}}</p>
+        
+        <p class="d-none" id='rating-obj' data-rating='{% if rating %}{{rating.rating}}{%else%}0{% endif %}' ></p>
+        
         <div class="row">
             <div class="col-8" style="margin-top: 25px;">
                 <div class="section__language">
@@ -18,7 +21,7 @@
                     <p>The course by <span class="teacher-here"></span></p>
                     <div class="mb-4" style="border-radius: 5px; background-color: white;">
                         <div class="px-3 pt-3">
-                            <h5> <span class="the-title"></span> - <span class="teacher-here"></span></h5>
+                            <h5> <span class="the-title"></span> - <span class="teacher-here"></span> <span></span> </h5>
                             <div style="color: gray;" class="d-flex">
                                 <div class="d-flex">
                                     <i class="fas fa-birthday-cake"></i>
@@ -27,7 +30,14 @@
                                 <div class="d-flex ml-3">
                                     <i class="far fa-clock"></i>
                                     <p class="ml-1">lesson <span class="deadline"></span> weeks</p>
+                                    <span class="ml-3">
+                                        <i class="fas fa-star rating-star"></i>
+                                        <i class="fas fa-star rating-star"></i>
+                                        <i class="fas fa-star rating-star"></i>
+                                        <i class="fas fa-star rating-star"></i>
+                                        <i class="fas fa-star rating-star"></i>
 
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -91,6 +101,15 @@
                         <h4 class="px-3 pt-3"><b class="course-price"> </b><small style="color: white;"> for 2 weeks</small></h4>
                     </div>
                     <div class="p-3">
+                        <div id='rate' class="mb-3 d-none">
+                            <i data-value='1' class="fas fa-star rate-star"></i>
+                            <i data-value='2' class="fas fa-star rate-star"></i>
+                            <i data-value='3' class="fas fa-star rate-star"></i>
+                            <i data-value='4' class="fas fa-star rate-star"></i>
+                            <i data-value='5' class="fas fa-star rate-star"></i>
+
+                        </div>
+
                         <div class="d-flex justify-content-between">
                             <h5>Course</h5>
                             <h5 class="course-price"></h5>
@@ -147,6 +166,7 @@
                         </div>
                         <div class="d-flex justify-content-between hide-me">
                             <p>Total due now</p>
+                            
                             <h5 class="course-price"></h5>
                         </div>
                         <button class="hide-me" id="order-button" style="width: 100%;color: white;background-color: red;border: none;padding: 10px 0px; border-radius: 5px;" type="submit" value="Book">Book</button>
@@ -158,7 +178,10 @@
         </div>
     </div>
 </div>
+    {% endblock %}
+    {% block js %}
     <script src="{% static 'js/course-detail.js' %}"></script>
+
     {% endblock %}
 
 
