@@ -49,6 +49,13 @@ class Course(models.Model):
 
     def __str__(self):
         return f"{self.title}" 
+    
+    def get_avg_rating(self):
+        rat_numbers = list(map(lambda e: e.rating, self.ratings.all()))
+        if rat_numbers:
+            return sum(rat_numbers)//len(rat_numbers)
+        else:
+            return 0
 
 class Category(models.Model):
     title = models.CharField('Title',max_length=50, null=True)
@@ -71,7 +78,7 @@ class Question(models.Model):
     # answer_file = models.FileField('File',upload_to='files/', null=True, blank=True)
     # audio_record = models.FileField('File',upload_to='files/', null=True, blank=True)
     answer_type = models.ManyToManyField('AnswerType',  verbose_name=("Answer Type"), db_index=True, related_name="answer_type_question", null=True, blank=True)
-    
+    week = models.IntegerField(default=1)
     
     is_auto = models.BooleanField('Is auto', default=1)
     is_success = models.BooleanField('Is succes', default=0)
@@ -171,6 +178,25 @@ class Subject(models.Model):
 
     def __str__(self):
         return f"{self.title}" 
+
+class Rating(models.Model):
+    RATING_CHOICES = (
+        (1,1),
+        (2,2),
+        (3,3),
+        (4,4),
+        (5,5)
+    )
+
+    author = models.ForeignKey(User,on_delete=models.CASCADE, db_index=True, related_name='ratings')
+    rating = models.PositiveSmallIntegerField('rating',choices=RATING_CHOICES)
+    course = models.ForeignKey("Course", on_delete=models.CASCADE, db_index=True, related_name='ratings')
+
+    def __str__(self):
+        return f'{self.author} > {self.course} rating'
+    
+    class Meta:
+        unique_together = ('author','course')
 
 
 

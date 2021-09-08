@@ -29,3 +29,6 @@
     /* margin-bottom: 100px; */
     border-radius: 5px;
 }
+.rate-star{
+    cursor: pointer;
+}

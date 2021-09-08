@@ -1,5 +1,5 @@
 from django.db import models
-from core.models import Course, Option, Subject, Question, Order,UserAnswer, AnswerType
+from core.models import Course, Option, Rating, Subject, Question, Order,UserAnswer, AnswerType
 from rest_framework import serializers
 from drf_extra_fields.fields import Base64ImageField, Base64FileField
 
@@ -12,7 +12,7 @@ class PDFBase64FileField(Base64FileField):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ('id', 'title', 'teacher', 'price', 'image', 'description', 'course_deadline', 'minimum_age', 'is_shared', 'category', 'video', 'youtube_video_url')
+        fields = ('id', 'title', 'teacher', 'price', 'image', 'description', 'course_deadline', 'minimum_age', 'is_shared', 'category', 'video', 'youtube_video_url','get_avg_rating')
 
 
     def create(self, validated_data):
@@ -68,7 +68,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ('id', 'title', 'description', 'image', 'correct_answer','video','is_auto','is_success','subject', 'answer_type' )
+        fields = ('id', 'title', 'description', 'image', 'correct_answer','video','is_auto','is_success','subject', 'answer_type','week' )
 
     # def create(self, validated_data):
     #     question = Question.objects.create(
@@ -127,3 +127,9 @@ class AnswerTypeSerializer(serializers.ModelSerializer):
     #     )
     #     useranswer.save()
     #     return useranswer
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = ('author','course','rating')
+        read_only_fields = ('author',)

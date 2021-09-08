@@ -60,14 +60,5 @@ class GetUserDataByTokenView(APIView):
     permission_classes = (permissions.IsAuthenticated, )
     def post(self, request, *args, **kwargs):
         user = request.user
-        print(user.id)
         serializer = UserSerializer(user)
-        print(serializer.data['username'],'salam')
-        # new_dict = {
-        #     'id': user.id,
-        #     'username': user.username,
-        #     'first_name': user.first_name,
-        #     'last_name': user.last_name,
-        #     'email': user.email
-        # }
         return JsonResponse(serializer.data)
