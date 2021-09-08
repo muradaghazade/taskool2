@@ -312,3 +312,32 @@ class RatingListCreateAPIView(ListCreateAPIView):
         else:
             rat.rating = serializer.validated_data['rating']
             rat.save()
+
+# class WeeksListAPIView(ListCreateAPIView):
+#     serializer_class = CourseSerializer
+#     def get_queryset(self, request):
+#         sub_id = request.data['subject']
+#         print(sub_id)
+#         queryset = Course.objects.all()
+#         return queryset
+    # def post(self, request, *args, **kwargs):
+    #     subject = Subject.objects.get(sub_id)
+    #     # print(subject)
+    #     return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class WeeksListAPIView(ListAPIView):
+    serializer_class = CourseSerializer
+
+    def get_queryset(self):
+        sub = self.request.data.get('subject')
+        queryset = Course.objects.filter(subject=sub)
+        print(sub)
+
+        # if title:
+        #     queryset = queryset.filter(title__icontains=title)
+
+        return queryset
+
+    def post(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
