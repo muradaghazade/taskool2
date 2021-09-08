@@ -7,6 +7,7 @@ __pycache__/
 */*.pyc
 *.sql
 postgresdb/
+postgre_db/
 redisdb/
 media/
 /media
