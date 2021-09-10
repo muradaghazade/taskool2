@@ -179,6 +179,23 @@ class Subject(models.Model):
     def __str__(self):
         return f"{self.title}" 
 
+class Comment(models.Model):
+    
+    author = models.ForeignKey(User,on_delete=models.CASCADE,db_index=True, related_name='comments')
+    question = models.ForeignKey(Question,on_delete=models.CASCADE,db_index=True, related_name='comments')
+    content = models.CharField(max_length=255)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+        ordering = ("id",)
+    
+    def __str__(self):
+        return f"{self.content}"
+    
 class Rating(models.Model):
     RATING_CHOICES = (
         (1,1),
@@ -200,4 +217,7 @@ class Rating(models.Model):
 
 
 
+    
+    
+    
      
