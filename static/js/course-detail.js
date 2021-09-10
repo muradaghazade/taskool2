@@ -255,9 +255,10 @@ let jwt = `Bearer ${localStorage.getItem("token")}`
         
         if(localStorage.getItem("token")){
           document.getElementById("book-place").style = 'display:block'
+          document.getElementById('order-button-two').style = 'display:none'
         }else{
-          document.getElementById("book-place").style = 'display:none'
-          
+          document.getElementById("order-button").style = 'display:none'
+          document.getElementById('order-button-two').style.display = 'block'
         }
 
 
