@@ -226,13 +226,13 @@
         }
     }
     .main{
-        height: 100VH;
+        /* height: 100VH; */
         width: 100%;
     }
     .left-side {
         width: 100%;
         background-color: #343a40 !important;
-        height: 100%;
+        /* height: 100%; */
         padding: 0px;
     }
     .username-name {
@@ -291,13 +291,8 @@
             <div class="left-list">
                 <ul class="left-ul">
                     <li class="mt-4" style="padding: 20px; ">
-                        <a href="" class="sidebar-items left-li">
+                        <a href="{% url 'core:profile' %}" class="sidebar-items left-li">
                             Created
-                        </a>
-                    </li>
-                    <li class="mt-4" style="padding: 20px; ">
-                        <a href="" class="sidebar-items left-li">
-                            Shared
                         </a>
                     </li>
                     <li class="mt-4" style="padding: 20px; ">
