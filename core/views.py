@@ -51,7 +51,7 @@ class CourseDetailView(DetailView):
         print(dict_resp['Message']['OrderStatus'])
         order_id = int(dict_resp['Message']['OrderDescription'])
         if dict_resp['Message']['OrderStatus'] == "APPROVED":
-            Order.objects.filter(pk=order_id).update(successfuly_paid=1)
+            Order.objects.filter(pk=order_id).update(successfuly_paid=True)
         elif dict_resp['Message']['OrderStatus'] == "DECLINED":
             print('declined')
             Order.objects.filter(pk=order_id).delete()

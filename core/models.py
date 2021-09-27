@@ -128,7 +128,9 @@ class UserAnswer(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, db_index=True, related_name='order')
     course = models.ForeignKey("Course", on_delete=models.CASCADE, db_index=True, related_name='the_order')
-    successfuly_paid = models.BooleanField('Successfuly Paid',default=0)
+    promocode = models.ForeignKey("Promocode", on_delete=models.CASCADE, db_index=True, related_name='promocode_order', null=True, blank=True)
+    successfuly_paid = models.BooleanField('Successfuly Paid',default=False)
+    # final_price = models.DecimalField('Price',max_digits=6, decimal_places=2, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -198,6 +200,8 @@ class Rating(models.Model):
     class Meta:
         unique_together = ('author','course')
 
-
+class Promocode(models.Model):
+    code = models.CharField('Code',max_length=50)
+    discount_percent = models.IntegerField('Discount Percent',blank=True,null=True)
 
      
