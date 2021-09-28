@@ -1,4 +1,4 @@
-from typing import final
+# from typing import final
 from django.db.models import query
 import requests
 from rest_framework import response
