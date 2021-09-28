@@ -4,6 +4,8 @@ url = `/api/v1/core/course/${pk}`;
 
 console.log(url);
 
+let course_id;
+
 
 function renderStars(n){
   let stars = $('.rating-star')
@@ -17,6 +19,7 @@ getCourseDetail = () => {
     fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
+      course_id = data.id
       console.log(data);
       renderStars(data['get_avg_rating'])
       document.querySelectorAll(".the-title").forEach(element => {
@@ -135,9 +138,16 @@ let jwt = `Bearer ${localStorage.getItem("token")}`
         .then((user_data) => {
           console.log(user_data);
 
+          promo = localStorage.getItem("promocode")
+
           data = {
             user: user_data.id,
-            course: pk
+            course: pk,
+            successfuly_paid: false
+        }
+
+        if (promo != null) {
+          data.promocode = promo
         }
 
         fetch(`/api/v1/core/order/`, {
@@ -263,6 +273,35 @@ let jwt = `Bearer ${localStorage.getItem("token")}`
 
 
 
+getPromocodeDiscount = (course_id, code) => {
+  data = {
+    course: course_id,
+    code: code
+  }
+  fetch(`/api/v1/core/use-promocode/`, {
+    method: "POST",
+    headers: {
+        "Content-type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+        console.log(data);
 
+        if (data.message == "Promocode activated!"){
+          localStorage.setItem("promocode", data.code_id)
+          document.getElementById("promocode-message").style.color = "green"
+        }
+        else {
+          document.getElementById("promocode-message").style.color = "red"
+        }
+        document.getElementById("promocode-message").innerText = data.message
+    })
+}
 
-
+document.getElementById('promocode-form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    code = document.getElementById("promocode").value
+    getPromocodeDiscount(pk, code)
+})

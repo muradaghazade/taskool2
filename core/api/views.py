@@ -1,10 +1,11 @@
 from django.db import models
+from typing import final
 from django.db.models import query
 from django.http import  Http404
 import requests
-from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView,RetrieveAPIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from core.models import Comment, Course, Rating, Subject, Question , Option, Order, UserAnswer, AnswerType
+from rest_framework import response
+from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView
+from core.models import Course, Rating, Subject, Question , Option, Order, UserAnswer, AnswerType, Promocode
 from rest_framework.views import APIView
 from .serializers import (
     CourseSerializer,
@@ -17,7 +18,9 @@ from .serializers import (
     CreateCourseSerializer,
     AnswerTypeSerializer,
     CommentSerializer,
-    CommentCreateSerializer
+    CommentCreateSerializer,
+    PromocodeSerializer,
+    AnswerTypeSerializer
 )
 
 from rest_framework import serializers, status,permissions
@@ -54,6 +57,40 @@ class AnswerTypeDetailAPIView(APIView):
 class CourseAPIView(CreateAPIView):
     model = Course
     serializer_class = CreateCourseSerializer
+
+class PromocodeCreateAPIView(CreateAPIView):
+    model = Promocode
+    serializer_class = PromocodeSerializer
+
+class GetPromocodeDiscountAPIViev(APIView):
+    def post(self, request, *args, **kwargs):
+        course_id = self.request.data.get('course')
+        code = self.request.data.get('code')
+        promocode = Promocode.objects.filter(code=code)
+        # course = Course.objects.filter(pk=course_id)[0]
+        # discount = course.price * promocode.discount_percent/100
+        # new_price = course.price - discount
+        print(promocode)
+        # course.updat
+        
+        if len(promocode) == 0:
+            response = False
+        else:
+            response = True
+            final_promo = Promocode.objects.filter(code=code)[0]
+
+
+        if response == True:
+            return Response({
+            'code_id': final_promo.id,
+            'code': code,
+            'message': "Promocode activated!"
+            })
+        else:
+            return Response({
+            'message': "Promocode is invalid!"
+            })
+            
 
 class CourseListAPIView(ListAPIView):
     serializer_class = CourseSerializer
@@ -204,10 +241,16 @@ class OrderCreateAPIView(CreateAPIView):
         headers = self.get_success_headers(serializer.data)
         # self.object = self.get_object()
         print( Order.objects.filter(pk=id), 'this is id')
-        Order.objects.filter(pk=id).update(successfuly_paid=1)
-        # order = get_object_or_404(Course, pk=request.data['user'])
+        xxx = Order.objects.filter(pk=id)[0]
+        print(xxx.promocode)
         course = Course.objects.get(pk=int(request.data['course']))
         price = course.price
+        if xxx.promocode != None:
+            discount = price * xxx.promocode.discount_percent/100
+            price = price - discount
+        # Order.objects.filter(pk=id).update(successfuly_paid=1)
+        # order = get_object_or_404(Course, pk=request.data['user'])
+        
         # 3136323935333336313333323230303030303030
         # 3136323935333431303935373030303030303030
         if price == 0:

@@ -1,6 +1,5 @@
 from django.db import models
-from core.models import Course, Option, Rating, Subject, Question, Order,UserAnswer, AnswerType,Comment
-from accounts.api.serializers import UserSerializer
+from core.models import Course, Option, Rating, Subject, Question, Order,UserAnswer, AnswerType, Promocode
 from rest_framework import serializers
 from drf_extra_fields.fields import Base64ImageField, Base64FileField
 
@@ -9,6 +8,11 @@ class PDFBase64FileField(Base64FileField):
 
     def get_file_extension(self, filename, decoded_file):
         return 'mp4'
+
+class PromocodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Promocode
+        fields = ('id', 'code', 'discount_percent')
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
@@ -104,7 +108,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('id', 'user', 'course', 'successfuly_paid')
+        fields = ('id', 'user', 'course', 'successfuly_paid', 'promocode')
 
 
 class UserAnswerSerializer(serializers.ModelSerializer):
