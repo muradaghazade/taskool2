@@ -205,8 +205,8 @@ async function manualQuestionCreate(title, question,image = null, video = null, 
     }
 
     if (video != null) {
-        video_file = await toBase64(video)
-        data.video = video_file
+        // video_file = await toBase64(video)
+        data.video = video
     }
 
 
@@ -289,7 +289,7 @@ document.querySelector(".question_form").addEventListener('submit', (e) => {
     let question = document.getElementById('question').value
     let correct_answer = document.getElementById('correct_answer').value;
     let image = document.getElementById('image').files[0];
-    let video = document.getElementById('video').files[0];
+    let video = document.getElementById('video').value;
     let link = document.getElementById('link').value;
     var inputs = document.querySelectorAll('.option')
     subject_id = localStorage.getItem('subject_id')

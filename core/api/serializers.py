@@ -69,7 +69,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
 
     image = Base64ImageField(required=False)
-    video = PDFBase64FileField(required=False, )
+    # video = PDFBase64FileField(required=False, )
 
     class Meta:
         model = Question
