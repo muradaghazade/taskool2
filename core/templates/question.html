@@ -2,6 +2,7 @@
 {% load static %}
 {% block css %}
 <!-- <link rel="stylesheet" href="{% static 'css/question.css' %}"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/css/uikit.min.css" />
 <style>
     .created {
     width: 100%;
@@ -61,7 +62,9 @@
     border-radius: 3px;
     border: 0px;
 }
-
+h6 {
+    color: white;
+}
 .correct_answer1 {
     display: flex;
     justify-content: center;
@@ -363,7 +366,30 @@ color: white;
     </div>
     <button class='save mt-2' type="submit">Answer</button>
     
-    
+    <button id="discussion" class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip">Discussion</button>
+
+<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <div id="comments">
+
+            <!-- <h3>test</h3> -->
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
+        </div>
+        <form>
+            <div class="form-row d-flex pb-2  pt-1" style=" background-color:#222222;position: fixed; bottom: 0px;">
+              <div class="mr-3" >
+                <input autocomplete="off" type="text" class="form-control mb-2" id="comment_input" placeholder="Write Your Comment">
+              </div>
+              <div >
+                <button data-userid ="{{request.user.id}}" id="comment_button" type="submit" class="btn btn-primary mb-2">Submit</button>
+              </div>
+            </div>
+          </form>
+
+    </div>
+
+</div>
     
     
 </form>
@@ -388,6 +414,9 @@ color: white;
 {% block js %}
 <script src="{% static 'js/question-answer.js' %}"></script>
 <script src="ckeditor5-build-classic/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit-icons.min.js"></script>
+<script src="{% static 'js/questions.js' %}"></script>
 
 <script>
     ClassicEditor

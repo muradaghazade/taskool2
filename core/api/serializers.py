@@ -1,5 +1,6 @@
 from django.db import models
-from core.models import Course, Option, Rating, Subject, Question, Order,UserAnswer, AnswerType, Promocode
+from core.models import Course, Option, Rating, Subject, Question, Order,UserAnswer, AnswerType, Promocode, Comment
+from accounts.api.serializers import UserSerializer
 from rest_framework import serializers
 from drf_extra_fields.fields import Base64ImageField, Base64FileField
 
@@ -138,3 +139,14 @@ class RatingSerializer(serializers.ModelSerializer):
         model = Rating
         fields = ('author','course','rating')
         read_only_fields = ('author',)
+
+class CommentSerializer(serializers.ModelSerializer):
+    author = UserSerializer()
+    class Meta:
+        model = Comment
+        fields = ('author','question','content','created_at')
+        
+class CommentCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('author','question','content','created_at')

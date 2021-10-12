@@ -206,3 +206,19 @@ class Promocode(models.Model):
     discount_percent = models.IntegerField('Discount Percent',blank=True,null=True)
 
      
+class Comment(models.Model):
+    
+    author = models.ForeignKey(User,on_delete=models.CASCADE,db_index=True, related_name='comments')
+    question = models.ForeignKey(Question,on_delete=models.CASCADE,db_index=True, related_name='comments')
+    content = models.CharField(max_length=255)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+        ordering = ("id",)
+    
+    def __str__(self):
+        return f"{self.content}"

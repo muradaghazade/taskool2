@@ -3,8 +3,9 @@ from django.db.models import query
 import requests
 from rest_framework import response
 from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView
-from core.models import Course, Rating, Subject, Question , Option, Order, UserAnswer, AnswerType, Promocode
+from core.models import Course, Rating, Subject, Question , Option, Order, UserAnswer, AnswerType, Promocode, Comment
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .serializers import (
     CourseSerializer,
     RatingSerializer, 
@@ -15,7 +16,9 @@ from .serializers import (
     UserAnswerSerializer,
     CreateCourseSerializer,
     PromocodeSerializer,
-    AnswerTypeSerializer
+    AnswerTypeSerializer,
+    CommentSerializer,
+    CommentCreateSerializer
 )
 
 from rest_framework import serializers, status,permissions
@@ -390,3 +393,19 @@ class WeeksListAPIView(ListAPIView):
 
     def post(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
+        
+class CommentAPIView(ListCreateAPIView):
+    model = Comment
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    queryset = Comment.objects.all()
+    
+    def get_queryset(self):
+        queryset = Comment.objects.filter(question = self.kwargs['id'])
+        return queryset
+    
+    def get_serializer_class(self):
+        
+        if self.request.method == 'POST':
+            return CommentCreateSerializer
+        elif self.request.method == 'GET':
+            return CommentSerializer
