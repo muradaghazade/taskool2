@@ -162,10 +162,24 @@ let jwt = `Bearer ${localStorage.getItem("token")}`
       console.log(data);
       // document.getElementById("congrats-div").innerHTML = `<p style="color: green;">You successfuly bought this course!</p>`
       // https://e-commerce.kapitalbank.az/index.jsp?ORDERID=10253&SESSIONID=1661DD2BD23BC67D6CBF84FE847B369F
-      if (data != 'free'){
+      if (data.status != 'free'){
       document.location.href = `${data.url}?ORDERID=${data.order_id}&SESSIONID=${data.session_id}`
       }
       else {
+        free_data = {
+          successfuly_paid: true
+        }
+        fetch(`/api/v1/core/order/${data.id}/`, {
+          method: "PATCH",
+          headers: {
+              "Content-type": "application/json",
+          },
+          body: JSON.stringify(free_data),
+        })
+          .then((resp) => resp.json())
+          .then((update_data) => {
+            console.log(update_data);
+          })
       document.getElementById("start-course").style.display = 'block'
         document.querySelector('#order-button').style.display = 'none'
       }

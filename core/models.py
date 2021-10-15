@@ -74,7 +74,7 @@ class Question(models.Model):
     correct_answer = models.CharField('Correct answer',max_length=125,null=True,blank=True)
     image = models.ImageField('Image',upload_to='images/', null=True, blank=True)
     # video = models.FileField('Video',upload_to='videos/', null=True, blank=True)
-    video = models.CharField('Video',max_length=5000)
+    video = models.CharField('Video',max_length=5000, null=True, blank=True)
     edu_url = models.CharField('Url',max_length=200,null=True,default=False)
     # answer_file = models.FileField('File',upload_to='files/', null=True, blank=True)
     # audio_record = models.FileField('File',upload_to='files/', null=True, blank=True)

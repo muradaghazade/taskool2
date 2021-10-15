@@ -253,7 +253,11 @@ class OrderCreateAPIView(CreateAPIView):
         # 3136323935333431303935373030303030303030
         if price == 0:
             print('This is free!')
-            return Response("free", status=status.HTTP_201_CREATED, headers=headers)
+            free_resp = {
+                'status': 'free',
+                'id': id
+            }
+            return Response(free_resp, status=status.HTTP_201_CREATED, headers=headers)
         else:
             data = f"""<?xml version="1.0" encoding="UTF-8"?>
             <TKKPG>
